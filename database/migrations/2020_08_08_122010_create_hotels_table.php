@@ -19,9 +19,9 @@ class CreateHotelsTable extends Migration
             $table->string('address');
             $table->text('description');
             $table->decimal('price');
-            $table->decimal('rating');
-            $table->string('video');
-            $table->boolean('popular');
+            $table->decimal('rating')->nullable();
+            $table->string('video')->nullable();
+            $table->boolean('popular')->nullable();
             $table->timestamps();
         });
     }
