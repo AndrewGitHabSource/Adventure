@@ -495,171 +495,59 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="destination">
-                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/hotel-1.jpg') }});">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="icon-link"></span>
-                            </div>
-                        </a>
-                        <div class="text p-3">
-                            <div class="d-flex">
-                                <div class="one">
-                                    <h3><a href="#">New Orleans, Hotel</a></h3>
-                                    <p class="rate">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star-o"></i>
-                                        <span>8 Rating</span>
-                                    </p>
+                @foreach($hotels as $hotel)
+                    <div class="col-sm col-md-6 col-lg ftco-animate">
+                        <div class="destination @if ($loop->iteration % 2 == 0) {{ 'd-md-flex flex-column-reverse' }} @endif">
+                            <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset($hotel->galleries[0]->image) }});">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-link"></span>
                                 </div>
-                                <div class="two">
-                                    <span class="price per-price">$40<br><small>/night</small></span>
+                            </a>
+
+                            <div class="text p-3">
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3>
+                                            <a href="#">{{ $hotel->name }}</a>
+                                        </h3>
+
+                                        <p class="rate">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                @if($i < $hotel->rating)
+                                                    <i class="icon-star"></i>
+                                                @else
+                                                    <i class="icon-star-o"></i>
+                                                @endif
+                                            @endfor
+
+                                            <span>{{ $hotel->rating }} Rating</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="two">
+                                        <span class="price per-price">
+                                            ${{ $hotel->price }}<br>
+
+                                            <small>/night</small>
+                                        </span>
+                                    </div>
                                 </div>
+
+                                <p>{{ $hotel->description }}</p>
+
+                                <hr>
+
+                                <p class="bottom-area d-flex">
+                                    <span><i class="icon-map-o"></i> {{ Str::limit($hotel->address, 80, '...') }}</span>
+
+                                    <span class="ml-auto">
+                                        <a href="#">Book Now</a>
+                                    </span>
+                                </p>
                             </div>
-                            <p>Far far away, behind the word mountains, far from the countries</p>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <span><i class="icon-map-o"></i> Miami, Fl</span>
-                                <span class="ml-auto"><a href="#">Book Now</a></span>
-                            </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="destination d-md-flex flex-column-reverse">
-                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/hotel-2.jpg') }});">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="icon-link"></span>
-                            </div>
-                        </a>
-                        <div class="text p-3">
-                            <div class="d-flex">
-                                <div class="one">
-                                    <h3><a href="#">New Orleans, Hotel</a></h3>
-                                    <p class="rate">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star-o"></i>
-                                        <span>8 Rating</span>
-                                    </p>
-                                </div>
-                                <div class="two">
-                                    <span class="price per-price">$40<br><small>/night</small></span>
-                                </div>
-                            </div>
-                            <p>Far far away, behind the word mountains, far from the countries</p>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <span><i class="icon-map-o"></i> Miami, Fl</span>
-                                <span class="ml-auto"><a href="#">Book Now</a></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="destination">
-                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/hotel-3.jpg') }});">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="icon-link"></span>
-                            </div>
-                        </a>
-                        <div class="text p-3">
-                            <div class="d-flex">
-                                <div class="one">
-                                    <h3><a href="#">New Orleans, Hotel</a></h3>
-                                    <p class="rate">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star-o"></i>
-                                        <span>8 Rating</span>
-                                    </p>
-                                </div>
-                                <div class="two">
-                                    <span class="price per-price">$40<br><small>/night</small></span>
-                                </div>
-                            </div>
-                            <p>Far far away, behind the word mountains, far from the countries</p>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <span><i class="icon-map-o"></i> Miami, Fl</span>
-                                <span class="ml-auto"><a href="#">Book Now</a></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="destination d-md-flex flex-column-reverse">
-                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/hotel-4.jpg') }});">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="icon-link"></span>
-                            </div>
-                        </a>
-                        <div class="text p-3">
-                            <div class="d-flex">
-                                <div class="one">
-                                    <h3><a href="#">New Orleans, Hotel</a></h3>
-                                    <p class="rate">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star-o"></i>
-                                        <span>8 Rating</span>
-                                    </p>
-                                </div>
-                                <div class="two">
-                                    <span class="price per-price">$40<br><small>/night</small></span>
-                                </div>
-                            </div>
-                            <p>Far far away, behind the word mountains, far from the countries</p>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <span><i class="icon-map-o"></i> Miami, Fl</span>
-                                <span class="ml-auto"><a href="#">Book Now</a></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-md-6 col-lg ftco-animate">
-                    <div class="destination">
-                        <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/hotel-5.jpg') }});">
-                            <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="icon-link"></span>
-                            </div>
-                        </a>
-                        <div class="text p-3">
-                            <div class="d-flex">
-                                <div class="one">
-                                    <h3><a href="#">New Orleans, Hotel</a></h3>
-                                    <p class="rate">
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star"></i>
-                                        <i class="icon-star-o"></i>
-                                        <span>8 Rating</span>
-                                    </p>
-                                </div>
-                                <div class="two">
-                                    <span class="price per-price">$40<br><small>/night</small></span>
-                                </div>
-                            </div>
-                            <p>Far far away, behind the word mountains, far from the countries</p>
-                            <hr>
-                            <p class="bottom-area d-flex">
-                                <span><i class="icon-map-o"></i> Miami, Fl</span>
-                                <span class="ml-auto"><a href="#">Book Now</a></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -669,6 +557,7 @@
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
                     <h2 class="mb-4">Our satisfied customer says</h2>
+
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
                 </div>
             </div>
@@ -678,13 +567,19 @@
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
                                 <div class="user-img mb-5" style="background-image: url({{ asset('images/person_1.jpg') }})">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                      <i class="icon-quote-left"></i>
+                                    </span>
                                 </div>
+
                                 <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="mb-5">
+                                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+                                        blind texts.
+                                    </p>
+
                                     <p class="name">Mark Web</p>
+
                                     <span class="position">Marketing Manager</span>
                                 </div>
                             </div>
@@ -692,13 +587,18 @@
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
                                 <div class="user-img mb-5" style="background-image: url({{ asset('images/person_2.jpg') }})">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                      <i class="icon-quote-left"></i>
+                                    </span>
                                 </div>
                                 <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="mb-5">
+                                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                        there live the blind texts.
+                                    </p>
+
                                     <p class="name">Mark Web</p>
+
                                     <span class="position">Interface Designer</span>
                                 </div>
                             </div>
@@ -706,13 +606,19 @@
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
                                 <div class="user-img mb-5" style="background-image: url({{ asset('images/person_3.jpg') }})">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                      <i class="icon-quote-left"></i>
+                                    </span>
                                 </div>
+
                                 <div class="text">
-                                    <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                    <p class="mb-5">
+                                        Far far away, behind the word mountains, far from the countries
+                                        Vokalia and Consonantia, there live the blind texts.
+                                    </p>
+
                                     <p class="name">Mark Web</p>
+
                                     <span class="position">UI Designer</span>
                                 </div>
                             </div>
@@ -720,13 +626,16 @@
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
                                 <div class="user-img mb-5" style="background-image: url({{ asset('images/person_1.jpg') }})">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                      <i class="icon-quote-left"></i>
+                                    </span>
                                 </div>
+
                                 <div class="text">
                                     <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+
                                     <p class="name">Mark Web</p>
+
                                     <span class="position">Web Developer</span>
                                 </div>
                             </div>
@@ -734,9 +643,9 @@
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
                                 <div class="user-img mb-5" style="background-image: url({{ asset('images/person_1.jpg') }})">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                      <i class="icon-quote-left"></i>
+                                    </span>
                                 </div>
                                 <div class="text">
                                     <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>

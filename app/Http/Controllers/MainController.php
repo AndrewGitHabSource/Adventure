@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Hotel;
 
 class MainController extends Controller
 {
     public function index(){
-        return view('main');
+        $hotels = Hotel::popular();
+
+        return view('main', ['hotels' => $hotels]);
     }
 }

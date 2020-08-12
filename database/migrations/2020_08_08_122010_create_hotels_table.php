@@ -22,7 +22,7 @@ class CreateHotelsTable extends Migration
             $table->decimal('price');
             $table->string('country')->nullable();
             $table->string('city')->nullable();
-            $table->decimal('rating')->nullable();
+            $table->float('rating')->nullable();
             $table->string('video')->nullable();
             $table->boolean('popular')->nullable();
             $table->timestamps();
