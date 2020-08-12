@@ -15,6 +15,7 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
             $table->string('name');
             $table->string('address');
             $table->text('description');

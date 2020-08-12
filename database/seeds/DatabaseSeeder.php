@@ -34,39 +34,51 @@ class DatabaseSeeder extends Seeder
         DB::table('hotels')->insert([
             [
                 'id' => 1,
+                'slug' => 'ht1',
                 'name' => 'Luxury Hotel in Paris',
                 'address' => '291 South 21th Street, Suite 721 New York NY 10016',
                 'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
                 'price' => 40,
                 'rating' => 4,
-                'popular' => true
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev'
             ],
             [
                 'id' => 2,
+                'slug' => 'ht2',
                 'name' => 'Luxury Hotel in Paris 1',
                 'address' => '291 South 21th Street, Suite 721 New York NY 12',
                 'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
                 'price' => 24,
                 'rating' => 4,
-                'popular' => true
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev'
             ],
             [
                 'id' => 3,
+                'slug' => 'ht3',
                 'name' => 'Luxury Hotel in Paris 2',
                 'address' => '291 South 21th Street, Suite 721 New York NY 1s',
                 'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
                 'price' => 20,
                 'rating' => 4,
-                'popular' => true
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev'
             ],
             [
                 'id' => 4,
+                'slug' => 'ht4',
                 'name' => 'Luxury Hotel in Paris 5',
                 'address' => '291 South 21th Street, Suite 721 New York NY 1s',
                 'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
                 'price' => 48,
                 'rating' => 5,
-                'popular' => true
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev'
             ]
         ]);
 
@@ -79,6 +91,7 @@ class DatabaseSeeder extends Seeder
         DB::table('rooms')->insert([
             [
                 'name' => 'Hotel, Italy',
+                'slug' => 'ht1',
                 'address' => 'Miami, Fl',
                 'description' => 'Far far away, behind the word mountains, far from the countries',
                 'price' => 40,
@@ -87,6 +100,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Hotel 1 Room',
+                'slug' => 'ht2',
                 'address' => 'Miami, Fl',
                 'description' => 'Far far away, behind the word mountains, far from the countries',
                 'price' => 40,
@@ -95,6 +109,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Hotel, Italy 1',
+                'slug' => 'ht3',
                 'address' => 'Miami',
                 'description' => 'Far far away, behind the word mountains, far from the countries',
                 'price' => 40,
@@ -103,6 +118,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Hotel',
+                'slug' => 'ht4',
                 'address' => 'Miami 1258',
                 'description' => 'Far far away, behind the word mountains, far from the countries',
                 'price' => 40,
@@ -111,6 +127,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Hotel',
+                'slug' => 'ht5',
                 'address' => 'Miami',
                 'description' => 'Far far away, behind the word mountains, far from the countries',
                 'price' => 40,
@@ -156,6 +173,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('flights')->insert([
             [
+                'slug' => 'sl1',
                 'from' => 'Kiev',
                 'where' => 'Moscow',
                 'description' => 'description description description description description',
@@ -164,6 +182,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 55.5
             ],
             [
+                'slug' => 'sl2',
                 'from' => 'Moscow',
                 'where' => 'Kiev',
                 'description' => 'description description description description description',
@@ -172,6 +191,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 55.5
             ],
             [
+                'slug' => 'sl3',
                 'from' => 'Kiev',
                 'where' => 'New City',
                 'description' => 'description description description description description',
@@ -180,6 +200,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 55.5
             ],
             [
+                'slug' => 'sl4',
                 'from' => 'Kiev',
                 'where' => 'Smela',
                 'description' => 'description description description description description',
@@ -187,6 +208,38 @@ class DatabaseSeeder extends Seeder
                 'date_end' => Carbon::parse('18-08-2020'),
                 'price' => 55.5
             ],
+        ]);
+
+        DB::table('places')->insert([
+            [
+                'id' => 1,
+                'slug' => 'pl1',
+                'name' => 'Place 1',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'price' => 200,
+                'rating' => 5,
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/destination-1.jpg'
+
+            ]
+        ]);
+
+        DB::table('restaurants')->insert([
+            [
+                'id' => 1,
+                'slug' => 'pl1',
+                'name' => 'restaurant 1',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'rating' => 5,
+                'recommended' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/restaurant-1.jpg'
+            ]
         ]);
     }
 }

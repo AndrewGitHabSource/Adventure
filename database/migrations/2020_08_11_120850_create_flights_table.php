@@ -15,6 +15,7 @@ class CreateFlightsTable extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
+            $table->string('slug');
             $table->string('from');
             $table->string('where');
             $table->text('description')->nullable();
