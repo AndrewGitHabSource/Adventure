@@ -25,6 +25,7 @@ class CreatePlacesTable extends Migration
             $table->decimal('price');
             $table->decimal('rating')->nullable();
             $table->boolean('popular')->nullable();
+            $table->string('period');
             $table->timestamps();
         });
     }

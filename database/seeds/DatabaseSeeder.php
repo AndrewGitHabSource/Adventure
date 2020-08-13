@@ -222,9 +222,53 @@ class DatabaseSeeder extends Seeder
                 'popular' => true,
                 'country' => 'ukraine',
                 'city' => 'kiev',
-                'image' => '/images/destination-1.jpg'
+                'image' => '/images/destination-1.jpg',
+                'period' => '2 days 3 nights'
+            ],
+            [
+                'id' => 2,
+                'slug' => 'pl2',
+                'name' => 'Place 2',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'price' => 200,
+                'rating' => 4,
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/destination-2.jpg',
+                'period' => '2 days 3 nights'
 
+            ],
+            [
+                'id' => 3,
+                'slug' => 'pl3',
+                'name' => 'Place 3',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'price' => 200,
+                'rating' => 3,
+                'popular' => true,
+                'country' => 'russia',
+                'city' => 'moscow',
+                'image' => '/images/destination-3.jpg',
+                'period' => '2 days 3 nights'
+            ],
+            [
+                'id' => 4,
+                'slug' => 'pl4',
+                'name' => 'Place 4',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'price' => 200,
+                'rating' => 5,
+                'popular' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/destination-4.jpg',
+                'period' => '2 days 3 nights'
             ]
+
         ]);
 
         DB::table('restaurants')->insert([
@@ -239,6 +283,42 @@ class DatabaseSeeder extends Seeder
                 'country' => 'ukraine',
                 'city' => 'kiev',
                 'image' => '/images/restaurant-1.jpg'
+            ],
+            [
+                'id' => 2,
+                'slug' => 'pl2',
+                'name' => 'Luxury Restaurant',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'rating' => 5,
+                'recommended' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/restaurant-2.jpg'
+            ],
+            [
+                'id' => 3,
+                'slug' => 'pl3',
+                'name' => 'Luxury Restaurant 3',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'rating' => 2,
+                'recommended' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/restaurant-3.jpg'
+            ],
+            [
+                'id' => 4,
+                'slug' => 'pl4',
+                'name' => 'restaurant 4',
+                'address' => ' San Franciso, CA',
+                'description' => 'When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.',
+                'rating' => 4,
+                'recommended' => true,
+                'country' => 'ukraine',
+                'city' => 'kiev',
+                'image' => '/images/restaurant-4.jpg'
             ]
         ]);
     }
