@@ -12,11 +12,16 @@ class Hotel extends Model
         return $this->hasMany('App\Gallery');
     }
 
+    public function rooms()
+    {
+        return $this->hasMany('App\Room');
+    }
+
     public function scopePopular($query){
         return $query->where('popular', true)->take(4)->get();
     }
 
     public function scopeBySlug($query, $slug){
-        return $query->where('slug', $slug)->get();
+        return $query->where('slug', $slug)->first();
     }
 }

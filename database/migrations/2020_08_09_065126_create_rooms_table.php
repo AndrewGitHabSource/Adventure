@@ -21,6 +21,7 @@ class CreateRoomsTable extends Migration
             $table->text('description');
             $table->decimal('price');
             $table->string('image');
+            $table->float('rating')->nullable();
 
             $table->unsignedBigInteger('hotel_id')->nullable();
             $table->foreign('hotel_id')->references('id')->on('hotels');
