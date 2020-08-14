@@ -52,41 +52,72 @@
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-                                                    class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span>
+                                    <p class="rate">
+                                        <span>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                        </span>
+                                    </p>
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">
+                                    <p class="rate">
+                                        <span>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                        </span>
                                     </p>
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-                                                    class="icon-star"></i><i class="icon-star"></i><i
-                                                    class="icon-star-o"></i></span></p>
+                                    <p class="rate">
+                                        <span>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <i class="icon-star-o"></i>
+                                        </span>
+                                    </p>
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-                                                    class="icon-star"></i><i class="icon-star-o"></i><i
-                                                    class="icon-star-o"></i></span></p>
+                                    <p class="rate">
+                                        <span>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <i class="icon-star-o"></i>
+                                            <i class="icon-star-o"></i>
+                                        </span>
+                                    </p>
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">
-                                    <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i
-                                                    class="icon-star-o"></i><i class="icon-star-o"></i><i
-                                                    class="icon-star-o"></i></span></p>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">
-                                    <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i
-                                                    class="icon-star-o"></i><i class="icon-star-o"></i><i
-                                                    class="icon-star-o"></i></span></p>
+                                    <p class="rate">
+                                        <span>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <i class="icon-star-o"></i>
+                                            <i class="icon-star-o"></i>
+                                            <i class="icon-star-o"></i>
+                                        </span>
+                                    </p>
                                 </label>
                             </div>
                         </form>
@@ -94,6 +125,24 @@
                 </div>
 
                 <div class="col-lg-9">
+                    @if(session()->has('success_message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success_message') }}
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                            @foreach($errors->all() as $error)
+                                {{ $error }}<br/>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <div class="row">
                         @if ($hotel->galleries)
                             <div class="col-md-12 ftco-animate">
@@ -202,69 +251,81 @@
                         <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                             <h4 class="mb-5">Check Availability &amp; Booking</h4>
 
-                            <div class="fields">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div>
+                            <form name="form_available" method="post" action="{{ route('check.available', ['slug' => $hotel->slug]) }}">
+                                @csrf
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control checkin_date" placeholder="Date from">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control checkout_date" placeholder="Date to">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="select-wrap one-third">
-                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="" id="" class="form-control" placeholder="Guest">
-                                                    <option value="0">Guest</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
+                                <div class="fields">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input name="name" type="text" class="form-control" placeholder="Name">
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="select-wrap one-third">
-                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="" id="" class="form-control" placeholder="Children">
-                                                    <option value="0">Children</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input name="email" type="text" class="form-control" placeholder="Email">
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="submit" value="Check Availability" class="btn btn-primary py-3">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input name="date_from" type="text" class="form-control checkin_date" placeholder="Date from">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input name="date_to" type="text" class="form-control checkout_date" placeholder="Date to">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="select-wrap one-third">
+                                                    <div class="icon">
+                                                        <span class="ion-ios-arrow-down"></span>
+                                                    </div>
+
+                                                    <select name="guest_count" id="" class="form-control" placeholder="Guest">
+                                                        <option value="0">Guest</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="select-wrap one-third">
+                                                    <div class="icon">
+                                                        <span class="ion-ios-arrow-down"></span>
+                                                    </div>
+
+                                                    <select name="children_count" id="" class="form-control" placeholder="Children">
+                                                        <option value="0">Children</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" name="hotel_id" value="{{ $hotel->id }}">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="submit" value="Check Availability" class="btn btn-primary py-3">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
                         <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">

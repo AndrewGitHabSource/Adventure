@@ -22,6 +22,11 @@ class Hotel extends Model
         return $this->morphMany('App\Rating', 'ratingable');
     }
 
+    public function availability_hotels()
+    {
+        return $this->hasMany('App\Availability_hotels');
+    }
+
     public function parent_hotels()
     {
         return $this->belongsToMany('App\Hotel', 'hotel_hotel', 'child_id', 'parent_id');

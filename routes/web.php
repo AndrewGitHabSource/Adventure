@@ -17,4 +17,6 @@ Route::get('/', 'MainController@index')->name('main');
 
 Route::get('/hotel/{slug}', 'HotelController@view')->name('hotel');
 
+Route::post('/hotel/{slug}', 'HotelController@checkAvailable')->name('check.available');
+
 Route::get('/hotels', 'HotelController@hotelsList')->name('hotels');
