@@ -85,7 +85,9 @@ class DatabaseSeeder extends Seeder
         DB::table('ratings')->insert([
             'ip' => '127.0.0.2',
             'rating_value' => 4,
-            'hotel_id' => 1
+            'ratingable_id' => 1,
+            'ratingable_type' => 'App\Hotel',
+            'comment' => 'Text'
         ]);
 
         DB::table('rooms')->insert([
@@ -319,6 +321,19 @@ class DatabaseSeeder extends Seeder
                 'country' => 'ukraine',
                 'city' => 'kiev',
                 'image' => '/images/restaurant-4.jpg'
+            ]
+        ]);
+
+        DB::table('hotel_hotel')->insert([
+            [
+                'id' => 1,
+                'parent_id' => 1,
+                'child_id' => 2
+            ],
+            [
+                'id' => 2,
+                'parent_id' => 1,
+                'child_id' => 3
             ]
         ]);
     }

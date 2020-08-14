@@ -422,7 +422,7 @@
                                 <div class="d-flex">
                                     <div class="one">
                                         <h3>
-                                            <a href="#">{{ $hotel->name }}</a>
+                                            <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}">{{ $hotel->name }}</a>
                                         </h3>
 
                                         <p class="rate">
