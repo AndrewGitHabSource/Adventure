@@ -224,12 +224,12 @@
                                         @foreach($hotel->rooms as $room)
                                             <div class="col-md-4">
                                                 <div class="destination">
-                                                    <a href="hotel-single.html" class="img img-2" style="background-image: url({{ asset($room->image) }});"></a>
+                                                    <a href="{{ route('room', $room->slug) }}" class="img img-2" style="background-image: url({{ asset($room->image) }});"></a>
 
                                                     <div class="text p-3">
                                                         <div class="d-flex">
                                                             <div class="one">
-                                                                <h3><a href="hotel-single.html">{{ $room->name }}</a></h3>
+                                                                <h3><a href="{{ route('room', $room->slug) }}">{{ $room->name }}</a></h3>
 
                                                                 <p class="rate">
                                                                     @for ($i = 0; $i < 5; $i++)
@@ -345,6 +345,8 @@
                                 </div>
                             </form>
                         </div>
+
+                        @include('partials.rating.form', ['id_model' => $hotel->slug, 'model' => 'hotel'])
 
                         <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                             <h4 class="mb-4">Review &amp; Ratings</h4>
@@ -492,7 +494,9 @@
                                                         <p class="bottom-area d-flex">
                                                             <span><i class="icon-map-o"></i> {{ Str::limit($hotel->address, 10, '...') }}</span>
 
-                                                            <span class="ml-auto"><a href="#">Book Now</a></span>
+                                                            <span class="ml-auto">
+                                                                <a href="#">Book Now</a>
+                                                            </span>
                                                         </p>
                                                     </div>
                                                 </div>

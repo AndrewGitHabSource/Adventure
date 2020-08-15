@@ -25,3 +25,5 @@ Route::get('/hotels', 'HotelController@hotelsList')->name('hotels');
 Route::get('/place/{slug}', 'PlaceController@view')->name('place');
 
 Route::get('/restaurant/{slug}', 'RestaurantController@view')->name('restaurant');
+
+Route::get('/room/{slug}', 'RoomController@view')->name('room');
