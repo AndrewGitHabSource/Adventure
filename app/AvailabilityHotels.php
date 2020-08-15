@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Availability_hotels extends Model
+class AvailabilityHotels extends Model
 {
+    protected $table = 'availability_hotels';
+
     public $fillable = [
         'name',
         'email',

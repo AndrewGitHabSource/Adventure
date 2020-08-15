@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    public function commentable()
+    public $fillable = [
+        'rating_value',
+        'comment',
+        'ip',
+    ];
+
+    public function ratingable()
     {
         return $this->morphTo();
     }

@@ -306,7 +306,7 @@
                 @foreach($places as $place)
                     <div class="col-sm col-md-6 col-lg ftco-animate">
                             <div class="destination @if ($loop->iteration % 2 == 0) {{ 'd-md-flex flex-column-reverse' }} @endif">
-                                <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset($place->image) }});">
+                                <a href="{{ route('place', ['slug' => $place->slug]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset($place->image) }});">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-link"></span>
                                     </div>
@@ -316,7 +316,7 @@
                                     <div class="d-flex">
                                         <div class="one">
                                             <h3>
-                                                <a href="#">{{ $place->city }}, {{ $place->country }}</a>
+                                                <a href="{{ route('place', ['slug' => $place->slug]) }}">{{ $place->city }}, {{ $place->country }}</a>
                                             </h3>
 
                                             <p class="rate">
@@ -407,6 +407,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container-fluid">
             <div class="row">
                 @foreach($hotels as $hotel)
@@ -586,14 +587,14 @@
                 @foreach($restaurants as $restaurant)
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="destination @if ($loop->iteration % 2 == 0) {{ 'd-md-flex flex-column-reverse' }} @endif">
-                            <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/restaurant-1.jpg') }});">
+                            <a href="{{ route('restaurant', ['slug' => $restaurant->slug]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset('images/restaurant-1.jpg') }});">
                                 <div class="icon d-flex justify-content-center align-items-center">
                                     <span class="icon-link"></span>
                                 </div>
                             </a>
 
                             <div class="text p-3">
-                                <h3><a href="#">{{ $restaurant->name }}</a></h3>
+                                <h3><a href="{{ route('restaurant', ['slug' => $restaurant->slug]) }}">{{ $restaurant->name }}</a></h3>
 
                                 <p class="rate">
                                     @for ($i = 0; $i < 5; $i++)
