@@ -12,7 +12,7 @@
 
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 
-                <li class="nav-item"><a href="places.html" class="nav-link">Places</a></li>
+                <li class="nav-item"><a href="{{ route('places') }}" class="nav-link">Places</a></li>
 
                 <li class="nav-item"><a href="{{ route('hotels') }}" class="nav-link">Hotels</a></li>
 

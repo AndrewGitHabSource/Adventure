@@ -346,7 +346,7 @@
                             </form>
                         </div>
 
-                        @include('partials/rating_form', ['id_model' => $hotel->slug, 'model' => 'hotel'])
+                        @include('partials/rating_form', ['id_model' => $hotel->slug, 'model' => 'App\Hotel'])
 
                         @if (count($hotel->child_hotels) > 0)
                             <div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">

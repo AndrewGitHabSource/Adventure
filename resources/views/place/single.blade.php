@@ -78,7 +78,7 @@
                             </ul>
                         </div>
 
-                        @include('partials/rating_form', ['id_model' => $place->slug, 'model' => 'place'])
+                        @include('partials/rating_form', ['id_model' => $place->slug, 'model' => 'App\Place'])
                     </div>
                 </div> <!-- .col-md-8 -->
             </div>

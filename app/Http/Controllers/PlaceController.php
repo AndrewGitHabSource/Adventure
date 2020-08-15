@@ -13,4 +13,10 @@ class PlaceController extends Controller
 
         return view('place.single', ['place' => $place]);
     }
+
+    public function placesList(){
+        $places = Place::with('ratings')->paginate(3);
+
+        return view('place.places', ['places' => $places]);
+    }
 }

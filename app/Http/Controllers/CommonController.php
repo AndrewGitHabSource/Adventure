@@ -13,20 +13,7 @@ class CommonController extends Controller
 {
     public function sendRating(Request $request)
     {
-        switch ($request->model){
-            case 'hotel':
-                $model = Hotel::bySlug($request->id_model);
-                break;
-            case 'room':
-                $model = Room::bySlug($request->id_model);
-                break;
-            case 'restaurant':
-                $model = Restaurant::bySlug($request->id_model);
-                break;
-            case 'place':
-                $model = Place::bySlug($request->id_model);
-                break;
-        }
+        $model = $request->model::bySlug($request->id_model);
 
         $input = $request->except('id_model');
         $input['ip'] = $request->ip();

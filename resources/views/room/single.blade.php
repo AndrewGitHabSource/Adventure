@@ -64,9 +64,9 @@
                             </p>
                         </div>
 
-                        @include('partials/rating_form', ['id_model' => $room->slug, 'model' => 'room'])
+                        @include('partials/rating_form', ['id_model' => $room->slug, 'model' => 'App\Room'])
                     </div>
-                </div> <!-- .col-md-8 -->
+                </div>
             </div>
         </div>
     </section>
