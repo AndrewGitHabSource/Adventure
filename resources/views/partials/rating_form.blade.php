@@ -1,11 +1,13 @@
 <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
     <h4 class="mb-4">Review &amp; Ratings</h4>
+
     <div class="row">
         <div class="col-md-6">
-            <form action="{{ route('send.hotel.rating') }}" method="post" class="star-rating">
+            <form action="{{ route('send.rating') }}" method="post" class="star-rating">
                 @csrf
 
-                <input type="hidden" name="hotel_slug" value="{{ $hotel->slug }}">
+                <input type="hidden" name="id_model" value="{{ $id_model }}">
+                <input type="hidden" name="model" value="{{ $model }}">
 
                 <div class="form-check">
                     <input type="radio" value="5" name="rating_value" class="form-check-input" id="exampleCheck1">
@@ -69,7 +71,7 @@
                                 <i class="icon-star-o"></i>
                                 <i class="icon-star-o"></i>
                                 <i class="icon-star-o"></i>
-                                0 Ratings
+                                2 Ratings
                             </span>
                         </p>
                     </label>

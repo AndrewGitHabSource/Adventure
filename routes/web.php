@@ -18,7 +18,8 @@ Route::get('/', 'MainController@index')->name('main');
 Route::get('/hotel/{slug}', 'HotelController@view')->name('hotel');
 
 Route::post('/check-hotel', 'HotelController@checkAvailable')->name('check.available');
-Route::post('/hotel-rating', 'HotelController@sendRating')->name('send.hotel.rating');
+
+Route::post('/send-rating', 'CommonController@sendRating')->name('send.rating');
 
 Route::get('/hotels', 'HotelController@hotelsList')->name('hotels');
 

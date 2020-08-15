@@ -42,16 +42,4 @@ class HotelController extends Controller
 
         return redirect()->back()->with('success_message', 'Your request has been sent! We will contact with you.');
     }
-
-    public function sendRating(Request $request)
-    {
-        $hotel = Hotel::bySlug($request->hotel_slug);
-
-        $input = $request->except('hotel_slug');
-        $input['ip'] = $request->ip();
-
-        $hotel->ratings()->create($input);
-
-        return redirect()->back()->with('success_message', 'Your rating has been sent!');
-    }
 }
