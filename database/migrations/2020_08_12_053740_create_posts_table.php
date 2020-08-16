@@ -18,10 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->text('description');
-
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
-
+            $table->date('date');
             $table->timestamps();
         });
     }

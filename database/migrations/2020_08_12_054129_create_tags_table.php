@@ -18,10 +18,6 @@ class CreateTagsTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->text('description');
-
-            $table->unsignedBigInteger('post_id')->nullable();
-            $table->foreign('post_id')->references('id')->on('posts');
-
             $table->timestamps();
         });
     }
