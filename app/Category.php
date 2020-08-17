@@ -8,6 +8,10 @@ class Category extends Model
 {
     public function posts()
     {
-        return $this->belongsToMany('App\Post');
+        return $this->belongsToMany('App\Post', 'post_category');
+    }
+
+    public function scopeBySlug($query, $slug){
+        return $query->where('slug', $slug)->first();
     }
 }

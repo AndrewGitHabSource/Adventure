@@ -13,11 +13,19 @@ class Post extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany('App\Category', 'post_category');
     }
 
-    public function galleries()
+    public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+
+    public function scopeBySlug($query, $slug){
+        return $query->where('slug', $slug)->first();
+    }
+
+    public function scopeSearch($query, $value){
+        $query->orWhere('title', 'LIKE', "%$value%")->orWhere('description', 'LIKE', "%$value%")->get();
     }
 }

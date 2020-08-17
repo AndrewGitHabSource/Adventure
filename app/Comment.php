@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public function hotel()
+    public function Post()
     {
         return $this->belongsTo('App\Post');
     }

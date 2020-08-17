@@ -10,4 +10,8 @@ class Tag extends Model
     {
         return $this->belongsToMany('App\Post');
     }
+
+    public function scopeBySlug($query, $slug){
+        return $query->where('slug', $slug)->first();
+    }
 }
