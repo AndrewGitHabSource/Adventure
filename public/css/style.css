@@ -9053,30 +9053,30 @@ textarea.form-control {
     margin: 0;
     float: left;
     width: 100%; }
-  .comment-list li {
+  .comment-list .comment {
     padding: 0;
     margin: 0 0 30px 0;
     float: left;
     width: 100%;
     clear: both;
     list-style: none; }
-    .comment-list li .vcard {
+    .comment-list .vcard {
       width: 80px;
       float: left; }
-      .comment-list li .vcard img {
+      .comment-list .comment .vcard img {
         width: 50px;
         border-radius: 50%; }
-    .comment-list li .comment-body {
+    .comment-list .comment .comment-body {
       float: right;
       width: calc(100% - 80px); }
-      .comment-list li .comment-body h3 {
+      .comment-list .comment .comment-body h3 {
         font-size: 20px; }
-      .comment-list li .comment-body .meta {
+      .comment-list .comment .comment-body .meta {
         text-transform: uppercase;
         font-size: 13px;
         letter-spacing: .1em;
         color: #ccc; }
-      .comment-list li .comment-body .reply {
+      .comment-list .comment .comment-body .reply {
         padding: 5px 10px;
         background: #e6e6e6;
         color: #000000;
@@ -9085,7 +9085,7 @@ textarea.form-control {
         letter-spacing: .1em;
         font-weight: 400;
         border-radius: 4px; }
-        .comment-list li .comment-body .reply:hover {
+        .comment-list .comment .comment-body .reply:hover {
           color: #fff;
           background: black; }
 
@@ -9454,4 +9454,8 @@ textarea.form-control {
 
 .destination .text .bottom-area span {
   max-width: 276px;
+}
+
+.reply-form{
+  display: none;
 }

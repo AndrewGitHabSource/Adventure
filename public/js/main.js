@@ -323,7 +323,11 @@
 	});
 
 
-
+$('.reply').click((e) => {
+	e.preventDefault();
+	let $comment = $(e.target).closest('.comment');
+	$comment.find('.reply-form').toggle();
+});
 
 })(jQuery);
 

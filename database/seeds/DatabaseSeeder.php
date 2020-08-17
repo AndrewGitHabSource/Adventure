@@ -15,6 +15,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('users')->insert([
+            [
+                'id' => 1,
+                'name' => 'John Doe',
+                'login' => 'Admin',
+                'email' => 'gmail@gmail.com',
+                'photo' => '/images/person_1.jpg',
+                'info' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem 
+                           necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente 
+                           consectetur similique, inventore eos fugit cupiditate numquam!',
+                'is_admin' => true,
+                'password' => '11'
+            ]
+        ]);
+
         DB::table('countries')->insert([[
             'id' => 1,
             'name' => 'Ukraine',
@@ -341,6 +356,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 1,
                 'slug' => 'post-1',
+                'user_id' => 1,
                 'title' => '10 Tips For The Traveler',
                 'image' => '/images/image_1.jpg',
                 'description' => '<h2 class="mb-3">10 Tips For The Traveler</h2> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium? Esse minima nisi et. Dolore perferendis, enim praesentium omnis, iste doloremque quia officia optio deserunt molestiae voluptates soluta architecto tempora.</p>
@@ -363,6 +379,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 2,
                 'slug' => 'post-2',
+                'user_id' => 1,
                 'title' => 'Even the all-powerful Pointing has no control about the blind texts',
                 'image' => '/images/image_2.jpg',
                 'description' => 'description description description description description description',

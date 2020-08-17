@@ -21,6 +21,11 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function User()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function scopeBySlug($query, $slug){
         return $query->where('slug', $slug)->first();
     }
