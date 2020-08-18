@@ -35,7 +35,6 @@ class PostController extends Controller
     public function category($slug)
     {
         $category = Category::with('posts')->bySlug($slug);
-
         $posts = $category->posts()->paginate(3);
 
         return view('post.posts', ['posts' => $posts]);
@@ -44,7 +43,6 @@ class PostController extends Controller
     public function tag($slug)
     {
         $tag = Tag::with('posts')->bySlug($slug);
-
         $posts = $tag->posts()->paginate(3);
 
         return view('post.posts', ['posts' => $posts]);
@@ -60,7 +58,6 @@ class PostController extends Controller
     public function saveComment(CommentRequest $request)
     {
         $input = $request->except('_token');
-
         $input['date'] = Carbon::now()->format('Y-m-d');
 
         Comment::create($input);

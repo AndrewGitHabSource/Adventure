@@ -42,3 +42,7 @@ Route::get('/category/{slug}', 'PostController@category')->name('category');
 Route::get('/tag/{slug}', 'PostController@tag')->name('tag');
 
 Route::post('/send-comment', 'PostController@saveComment')->name('send.comment');
+
+Route::get('/contacts', 'ContactController@index')->name('contacts');
+
+Route::post('/contacts', 'ContactController@sendMessage')->name('form.contacts');
