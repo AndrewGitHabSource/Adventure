@@ -22,7 +22,7 @@ class PostController extends Controller
 
     public function view($slug)
     {
-        $post = Post::with(['tags', 'categories', 'user', 'comments' => function ($q) {
+        $post = Post::with(['tags', 'categories', 'user', 'child_posts', 'comments' => function ($q) {
             $q->where('comments.parent_id', '=', Null);
         }])->bySlug($slug);
 

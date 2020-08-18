@@ -118,76 +118,40 @@
                         </div>
                     @endif
 
-                    <div class="sidebar-box ftco-animate">
-                        <h3>Recent Blog</h3>
+                    @if (count($post->child_posts) > 0)
+                        <div class="sidebar-box ftco-animate">
+                            <h3>Recent Blog</h3>
 
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url({{ asset('images/image_1.jpg') }});"></a>
-                            <div class="text">
-                                <h3 class="heading">
-                                    <a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-                                </h3>
+                            @foreach ($post->child_posts as $child_post)
+                                <div class="block-21 mb-4 d-flex">
+                                    <a class="blog-img mr-4" style="background-image: url({{ asset($child_post->image) }});"></a>
+                                    <div class="text">
+                                        <h3 class="heading">
+                                            <a href="{{ route('post', ['slug' => $child_post->slug]) }}">{{ $child_post->title }}</a>
+                                        </h3>
 
-                                <div class="meta">
-                                    <div>
-                                        <a href="#">
-                                            <span class="icon-calendar"></span> July 12, 2018
-                                        </a>
-                                    </div>
+                                        <div class="meta">
+                                            <div>
+                                                <a href="{{ route('post', ['slug' => $child_post->slug]) }}">
+                                                    <span class="icon-calendar"></span> {{ \Carbon\Carbon::parse($post->date)->format('j F, Y') }}
+                                                </a>
+                                            </div>
 
-                                    <div>
-                                        <a href="#">
-                                            <span class="icon-person"></span> Admin
-                                        </a>
-                                    </div>
+                                            <div>
+                                                <a href="{{ route('post', ['slug' => $child_post->slug]) }}">
+                                                    <span class="icon-person"></span> {{ $child_post->user->name }}
+                                                </a>
+                                            </div>
 
-                                    <div>
-                                        <a href="#"><span class="icon-chat"></span> 19</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url({{ asset('images/image_2.jpg') }});"></a>
-                            <div class="text">
-                                <h3 class="heading">
-                                    <a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-                                </h3>
-
-                                <div class="meta">
-                                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-
-                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-
-                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="blog-img mr-4" style="background-image: url({{ asset('images/image_3.jpg') }});"></a>
-                            <div class="text">
-                                <h3 class="heading">
-                                    <a href="#">Even the all-powerful Pointing has no control about the blind texts</a>
-                                </h3>
-
-                                <div class="meta">
-                                    <div>
-                                        <a href="#"><span class="icon-calendar"></span> July 12, 2018</a>
-                                    </div>
-
-                                    <div>
-                                        <a href="#"><span class="icon-person"></span> Admin</a>
-                                    </div>
-
-                                    <div>
-                                        <a href="#"><span class="icon-chat"></span> 19</a>
+                                            <div>
+                                                <a href="#"><span class="icon-chat"></span> {{ $child_post->comments->count() }}</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    </div>
+                    @endif
 
                     @if (count($tags) > 0)
                         <div class="sidebar-box ftco-animate">

@@ -21,9 +21,19 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function parent_posts()
+    {
+        return $this->belongsToMany('App\Post', 'post_post', 'child_id', 'parent_id');
+    }
+
+    public function child_posts()
+    {
+        return $this->belongsToMany('App\Post', 'post_post', 'parent_id', 'child_id');
     }
 
     public function scopeBySlug($query, $slug){
