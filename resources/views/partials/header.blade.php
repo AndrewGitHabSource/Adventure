@@ -10,7 +10,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
 
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{{ route('page', ['slug' => 'about']) }}" class="nav-link">About</a></li>
 
                 <li class="nav-item"><a href="{{ route('places') }}" class="nav-link">Places</a></li>
 

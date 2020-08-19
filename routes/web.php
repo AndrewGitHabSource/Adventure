@@ -28,12 +28,11 @@ Route::get('/blog', 'PostController@postsList')->name('blog');
 Route::get('/places', 'PlaceController@placesList')->name('places');
 
 Route::get('/place/{slug}', 'PlaceController@view')->name('place');
-
 Route::get('/restaurant/{slug}', 'RestaurantController@view')->name('restaurant');
-
 Route::get('/room/{slug}', 'RoomController@view')->name('room');
 
 Route::get('/post/{slug}', 'PostController@view')->name('post');
+Route::get('/page/{slug}', 'PageController@view')->name('page');
 
 Route::get('/search-post', 'PostController@search')->name('search.post');
 
@@ -46,3 +45,5 @@ Route::post('/send-comment', 'PostController@saveComment')->name('send.comment')
 Route::get('/contacts', 'ContactController@index')->name('contacts');
 
 Route::post('/contacts', 'ContactController@sendMessage')->name('form.contacts');
+
+Route::post('/subscribe', 'CommonController@subscribe')->name('form.subscribe');

@@ -21,7 +21,7 @@ class ContactController extends Controller
 
         $contact = Contact::create($input);
 
-//        Mail::to($request->email)->send(new ContactMail($contact));
+        Mail::to($request->email)->send(new ContactMail($contact));
 
         return redirect()->back()->with('success_message', 'Your rating has been sent!');
     }
