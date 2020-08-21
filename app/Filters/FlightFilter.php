@@ -27,4 +27,9 @@ class FlightFilter extends QueryFilter
     {
         $this->builder->whereDate('date_end', '=', Carbon::parse($value));
     }
+
+    public function travelers($value)
+    {
+        $this->builder->where('travelers', '>', "%$value%");
+    }
 }

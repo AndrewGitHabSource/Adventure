@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('flights')->insert([
             [
-                'slug' => 'sl1',
+                'logo' => '/images/pq.png',
                 'from' => 'Kiev',
                 'where' => 'Moscow',
                 'description' => 'description description description description description',
@@ -199,7 +199,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 55.5
             ],
             [
-                'slug' => 'sl2',
+                'logo' => '/images/pq.png',
                 'from' => 'Moscow',
                 'where' => 'Kiev',
                 'description' => 'description description description description description',
@@ -208,7 +208,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 55.5
             ],
             [
-                'slug' => 'sl3',
+                'logo' => '/images/pq.png',
                 'from' => 'Kiev',
                 'where' => 'New City',
                 'description' => 'description description description description description',
@@ -217,7 +217,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 55.5
             ],
             [
-                'slug' => 'sl4',
+                'logo' => '/images/pq.png',
                 'from' => 'Kiev',
                 'where' => 'Smela',
                 'description' => 'description description description description description',

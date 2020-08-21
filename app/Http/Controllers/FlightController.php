@@ -11,6 +11,6 @@ class FlightController extends Controller
     public function searchFlights(FlightFilter $request){
         $flights = Flight::filter($request)->get();
 
-        dd($flights);
+        return view('flight.flights', ['flights' => $flights]);
     }
 }
