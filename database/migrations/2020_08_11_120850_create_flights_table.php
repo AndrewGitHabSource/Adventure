@@ -21,8 +21,8 @@ class CreateFlightsTable extends Migration
             $table->text('description')->nullable();
             $table->time('time')->nullable();
             $table->decimal('price');
-            $table->date('date_start');
-            $table->date('date_end');
+            $table->dateTime('date_start');
+            $table->dateTime('date_end');
             $table->integer('travelers')->nullable();
             $table->timestamps();
         });

@@ -47,3 +47,7 @@ Route::get('/contacts', 'ContactController@index')->name('contacts');
 Route::post('/contacts', 'ContactController@sendMessage')->name('form.contacts');
 
 Route::post('/subscribe', 'CommonController@subscribe')->name('form.subscribe');
+
+// Filters
+
+Route::get('/search-flights', 'FlightController@searchFlights')->name('search.flights');

@@ -194,7 +194,7 @@ class DatabaseSeeder extends Seeder
                 'from' => 'Kiev',
                 'where' => 'Moscow',
                 'description' => 'description description description description description',
-                'date_start' => Carbon::parse('11-08-2020'),
+                 'date_start' => Carbon::parse('11-08-2020'),
                 'date_end' => Carbon::parse('12-08-2020'),
                 'price' => 55.5
             ],

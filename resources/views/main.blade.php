@@ -13,56 +13,76 @@
                         <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Car Rent</a>
                     </div>
                 </div>
+
                 <div class="col-md-12 tab-wrap">
-
                     <div class="tab-content p-4 px-5" id="v-pills-tabContent">
-
                         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
-                            <form action="#" class="search-destination">
+                            <form action="{{ route('search.flights') }}" class="search-destination">
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">From</label>
+                                            <label for="from">From</label>
+
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-my_location"></span></div>
-                                                <input type="text" class="form-control" placeholder="From">
+                                                <div class="icon">
+                                                    <span class="icon-my_location"></span>
+                                                </div>
+
+                                                <input name="from" id="from" type="text" class="form-control" placeholder="From">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Where</label>
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control" placeholder="Where">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input name="where" type="text" class="form-control" placeholder="Where">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Check In</label>
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date" placeholder="Check In">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input name="date_start" type="text" class="form-control checkin_date" placeholder="Check In">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Check Out</label>
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date" placeholder="From">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input name="date_end" type="text" class="form-control checkout_date" placeholder="From">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Travelers</label>
+
                                             <div class="form-field">
                                                 <div class="select-wrap">
-                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
+                                                    <div class="icon">
+                                                        <span class="ion-ios-arrow-down"></span>
+                                                    </div>
+
+                                                    <select name="travelers" id="" class="form-control">
                                                         <option value="">1</option>
                                                         <option value="">2</option>
                                                         <option value="">3</option>
@@ -73,6 +93,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-self-end">
                                         <div class="form-group">
                                             <div class="form-field">
