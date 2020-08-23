@@ -5,9 +5,15 @@ namespace App\Filters;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Car;
+use App\Http\Requests\SearchCar;
 
 class CarFilter extends QueryFilter
 {
+    public function __construct(SearchCar $request)
+    {
+        parent::__construct($request);
+    }
+
     public function where($value)
     {
         $this->builder->where('city', 'LIKE', "%$value%");
