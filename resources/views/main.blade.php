@@ -155,35 +155,50 @@
                         </div>
 
                         <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-effect-tab">
-                            <form action="#" class="search-destination">
+                            <form action="{{ route('search.cars') }}" class="search-destination">
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Where</label>
+
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control" placeholder="Where">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input name="where" type="text" class="form-control" placeholder="Where">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Check In</label>
+
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date" placeholder="Check In">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input required name="date_start" type="text" class="form-control checkin_date" placeholder="Check In">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
                                             <label for="#">Check Out</label>
+
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date" placeholder="From">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input required name="date_end" type="text" class="form-control checkout_date" placeholder="From">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-self-end">
                                         <div class="form-group">
                                             <div class="form-field">

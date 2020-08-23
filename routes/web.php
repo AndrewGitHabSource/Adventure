@@ -51,3 +51,5 @@ Route::post('/subscribe', 'CommonController@subscribe')->name('form.subscribe');
 // Filters
 
 Route::get('/search-flights', 'FlightController@searchFlights')->name('search.flights');
+
+Route::get('/search-cars', 'CarController@searchCars')->name('search.cars');

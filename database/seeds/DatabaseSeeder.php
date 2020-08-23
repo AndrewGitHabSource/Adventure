@@ -581,5 +581,63 @@ class DatabaseSeeder extends Seeder
                 'date' => Carbon::parse('11-08-2020'),
             ]
         ]);
+
+        DB::table('cars')->insert([
+            [
+                'id' => 1,
+                'slug' => 'mazda_x55',
+                'model' => 'Mazda X55',
+                'image' => '/images/mazda.jpg',
+                'country' => 'Ukraine',
+                'city' => 'kiew',
+                'description' => 'Relax A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.',
+                'date_start' => Carbon::parse('11-08-2020'),
+                'date_end' => Carbon::parse('22-08-2020')
+            ],
+            [
+                'id' => 2,
+                'slug' => 'mazda_x22',
+                'model' => 'Mazda X22',
+                'image' => '/images/mazda.jpg',
+                'country' => 'Ukraine',
+                'city' => 'kiew',
+                'description' => 'Relax A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.',
+                'date_start' => Carbon::parse('11-08-2020'),
+                'date_end' => Carbon::parse('12-08-2020')
+            ],
+            [
+                'id' => 3,
+                'slug' => 'mazda_x11',
+                'model' => 'Mazda X11',
+                'image' => '/images/mazda.jpg',
+                'country' => 'Ukraine',
+                'city' => 'kiew',
+                'description' => 'Relax A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.',
+                'date_start' => Carbon::parse('19-08-2020'),
+                'date_end' => Carbon::parse('28-08-2020')
+            ],
+            [
+                'id' => 4,
+                'slug' => 'mazda_x44',
+                'model' => 'Mazda X44',
+                'image' => '/images/mazda.jpg',
+                'country' => 'Ukraine',
+                'city' => 'kiew',
+                'description' => 'Relax A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.',
+                'date_start' => Carbon::parse('11-08-2020'),
+                'date_end' => Carbon::parse('17-08-2020')
+            ],
+            [
+                'id' => 5,
+                'slug' => 'mazda_x',
+                'model' => 'Mazda X',
+                'image' => '/images/mazda.jpg',
+                'country' => 'Ukraine',
+                'city' => 'kiew',
+                'description' => 'Relax A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.',
+                'date_start' => Carbon::parse('05-08-2020'),
+                'date_end' => Carbon::parse('18-08-2020')
+            ],
+        ]);
     }
 }
