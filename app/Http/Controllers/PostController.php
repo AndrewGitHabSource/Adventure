@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Post;
-use App\Category;
-use App\Tag;
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
 use Carbon\Carbon;
 
 class PostController extends Controller

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Hotel;
+use App\Models\Hotel;
 use App\Http\Requests\FormAvailability;
-use App\AvailabilityHotels;
-use App\Rating;
+use App\Models\AvailabilityHotels;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 

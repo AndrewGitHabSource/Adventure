@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Hotel;
-use App\Place;
-use App\Restaurant;
+use App\Models\Hotel;
+use App\Models\Place;
+use App\Models\Restaurant;
 
 
 class MainController extends Controller

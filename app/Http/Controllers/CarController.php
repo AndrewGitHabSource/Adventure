@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Filters\CarFilter;
 use App\Http\Requests\SearchCar;
-use App\Car;
+use App\Models\Car;
 
 class CarController extends Controller
 {

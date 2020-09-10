@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class Place extends Model
 {
     public function ratings()
     {
-        return $this->morphMany('App\Rating', 'ratingable');
+        return $this->morphMany('App\Models\Rating', 'ratingable');
     }
 
     public function scopePopular($query){

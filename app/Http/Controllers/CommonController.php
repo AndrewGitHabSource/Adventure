@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Subscriber;
+use App\Models\Subscriber;
 use App\Http\Requests\Subscribe;
-use App\Hotel;
-use App\Room;
-use App\Restaurant;
-use App\Place;
+use App\Models\Hotel;
+use App\Models\Room;
+use App\Models\Restaurant;
+use App\Models\Place;
 
 
 class CommonController extends Controller

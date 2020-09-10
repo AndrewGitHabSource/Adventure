@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class Car extends Model
+class Flight extends Model
 {
     public function scopeFilter(Builder $builder, QueryFilter $filters)
     {

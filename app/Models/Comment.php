@@ -1,17 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-//    protected $fillable = array('*');
     protected $guarded = [];
 
     public function Post()
     {
-        return $this->belongsTo('App\Post');
+        return $this->belongsTo('App\Models\Post');
     }
 
     public function replies()
