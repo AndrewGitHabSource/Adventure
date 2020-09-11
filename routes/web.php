@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers as Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,43 +14,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index')->name('main');
+Route::get('/', [Controllers\MainController::class, 'index'])->name('main');
 
-Route::get('/hotel/{slug}', 'HotelController@view')->name('hotel');
+Route::get('/hotel/{slug}', [Controllers\HotelController::class, 'view'])->name('hotel');
 
-Route::post('/check-hotel', 'HotelController@checkAvailable')->name('check.available');
+Route::post('/check-hotel', [Controllers\HotelController::class, 'checkAvailable'])->name('check.available');
 
-Route::post('/send-rating', 'CommonController@sendRating')->name('send.rating');
+Route::post('/send-rating', [Controllers\CommonController::class, 'sendRating'])->name('send.rating');
 
-Route::get('/hotels', 'HotelController@hotelsList')->name('hotels');
+Route::get('/hotels', [Controllers\HotelController::class, 'hotelsList'])->name('hotels');
 
-Route::get('/blog', 'PostController@postsList')->name('blog');
+Route::get('/blog', [Controllers\PostController::class, 'postsList'])->name('blog');
 
-Route::get('/places', 'PlaceController@placesList')->name('places');
+Route::get('/places', [Controllers\PlaceController::class, 'placesList'])->name('places');
 
-Route::get('/place/{slug}', 'PlaceController@view')->name('place');
-Route::get('/restaurant/{slug}', 'RestaurantController@view')->name('restaurant');
-Route::get('/room/{slug}', 'RoomController@view')->name('room');
+Route::get('/place/{slug}', [Controllers\PlaceController::class, 'view'])->name('place');
+Route::get('/restaurant/{slug}', [Controllers\RestaurantController::class, 'view'])->name('restaurant');
+Route::get('/room/{slug}', [Controllers\RoomController::class, 'view'])->name('room');
 
-Route::get('/post/{slug}', 'PostController@view')->name('post');
-Route::get('/page/{slug}', 'PageController@view')->name('page');
+Route::get('/post/{slug}', [Controllers\PostController::class, 'view'])->name('post');
+Route::get('/page/{slug}', [Controllers\PageController::class, 'view'])->name('page');
 
-Route::get('/search-post', 'PostController@search')->name('search.post');
+Route::get('/search-post', [Controllers\PostController::class, 'search'])->name('search.post');
 
-Route::get('/category/{slug}', 'PostController@category')->name('category');
+Route::get('/category/{slug}', [Controllers\PostController::class, 'category'])->name('category');
 
-Route::get('/tag/{slug}', 'PostController@tag')->name('tag');
+Route::get('/tag/{slug}', [Controllers\PostController::class, 'tag'])->name('tag');
 
-Route::post('/send-comment', 'PostController@saveComment')->name('send.comment');
+Route::post('/send-comment', [Controllers\PostController::class, 'saveComment'])->name('send.comment');
 
-Route::get('/contacts', 'ContactController@index')->name('contacts');
+Route::get('/contacts', [Controllers\ContactController::class, 'index'])->name('contacts');
 
-Route::post('/contacts', 'ContactController@sendMessage')->name('form.contacts');
+Route::post('/contacts', [Controllers\ContactController::class, 'sendMessage'])->name('form.contacts');
 
-Route::post('/subscribe', 'CommonController@subscribe')->name('form.subscribe');
+Route::post('/subscribe', [Controllers\CommonController::class, 'subscribe'])->name('form.subscribe');
 
 // Filters
 
-Route::get('/search-flights', 'FlightController@searchFlights')->name('search.flights');
+Route::get('/search-flights', [Controllers\FlightController::class, 'searchFlights'])->name('search.flights');
 
-Route::get('/search-cars', 'CarController@searchCars')->name('search.cars');
+Route::get('/search-cars', [Controllers\CarController::class, 'searchCars'])->name('search.cars');
