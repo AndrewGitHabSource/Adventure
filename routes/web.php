@@ -31,6 +31,7 @@ Route::get('/places', [Controllers\PlaceController::class, 'placesList'])->name(
 Route::get('/place/{slug}', [Controllers\PlaceController::class, 'view'])->name('place');
 Route::get('/restaurant/{slug}', [Controllers\RestaurantController::class, 'view'])->name('restaurant');
 Route::get('/room/{slug}', [Controllers\RoomController::class, 'view'])->name('room');
+Route::get('/car/{car:slug}', [Controllers\CarController::class, 'view'])->name('car');
 
 Route::get('/post/{slug}', [Controllers\PostController::class, 'view'])->name('post');
 Route::get('/page/{slug}', [Controllers\PageController::class, 'view'])->name('page');

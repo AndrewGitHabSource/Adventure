@@ -4,8 +4,9 @@ namespace App\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use App\Interfaces\FilterInterface;
 
-abstract class QueryFilter
+abstract class QueryFilter implements FilterInterface
 {
     protected $builder;
     protected $request;

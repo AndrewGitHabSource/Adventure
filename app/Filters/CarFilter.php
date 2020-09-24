@@ -3,8 +3,6 @@
 namespace App\Filters;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use App\Car;
 use App\Http\Requests\SearchCar;
 
 class CarFilter extends QueryFilter
