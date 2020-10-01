@@ -51,8 +51,10 @@ class HotelController extends Controller
     }
 
     public function filterHotels(HotelFindFilter $request){
-        $hotels = Hotel::filter($request)->get();
+        $hotels = Hotel::filter($request)->paginate(3);
 
-        return response()->json(array('msg'=> $hotels), 200);
+        $returnHTML = view('hotel.filter_html')->with('hotels', $hotels)->render();
+
+        return response()->json(array('result'=> $returnHTML), 200);
     }
 }

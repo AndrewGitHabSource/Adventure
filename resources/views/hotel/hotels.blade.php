@@ -36,8 +36,8 @@
                                             <span class="start-price">0</span> - <span class="end-price">10</span>
                                         </div>
 
-                                        <input class="price_start" name="price_start" value="0" min="0" max="100" step="10" type="range"/>
-                                        <input class="price_end" name="price_end" value="20" min="0" max="100" step="10" type="range"/>
+                                        <input class="price_start" name="price_start" value="0" min="0" max="100" step="1" type="range"/>
+                                        <input class="price_end" name="price_end" value="20" min="0" max="100" step="1" type="range"/>
                                     </div>
                                 </div>
 
@@ -131,7 +131,7 @@
                     </div>
                 </div><!-- END-->
 
-                <div class="col-lg-9">
+                <div class="col-lg-9 ajax-filter">
                     <div class="row">
                         @if ($hotels)
                             @foreach ($hotels as $hotel)
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- .col-md-8 -->
+                </div>
             </div>
         </div>
     </section>

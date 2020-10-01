@@ -339,7 +339,7 @@ AOS.init({
                 console.log(data);
 
                 if (data.result) {
-
+                    $('.ajax-filter').html(data.result);
                 } else {
 
                 }

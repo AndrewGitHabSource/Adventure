@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 class HotelFindFilter extends QueryFilter
 {
     private $first_click = false;
-    private $price_click = false;
 
     public function __construct(Request $request)
     {
