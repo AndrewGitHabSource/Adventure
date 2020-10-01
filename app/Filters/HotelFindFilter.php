@@ -77,4 +77,12 @@ class HotelFindFilter extends QueryFilter
     {
         $this->builder->where('price', '<=', $value->price_end);
     }
+
+    public function rating($value){
+        $this->builder->where(function ($query) use ($value){
+            foreach ($value->rating as $rating){
+                $query->orWhere('rating', '=', $rating);
+            }
+        });
+    }
 }
