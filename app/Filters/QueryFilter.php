@@ -10,6 +10,7 @@ abstract class QueryFilter implements FilterInterface
 {
     protected $builder;
     protected $request;
+    public $set_all_values = false;
 
     public function __construct(Request $request)
     {
@@ -22,8 +23,13 @@ abstract class QueryFilter implements FilterInterface
 
         foreach ($this->filters() as $filter => $value) {
             if (method_exists($this, $filter)) {
-                if ($value !== null) {
-                    $this->$filter($value);
+                if ($this->set_all_values == true){
+                    $this->$filter($this->request);
+                }
+                else{
+                    if ($value !== null) {
+                        $this->$filter($value);
+                    }
                 }
             }
         }

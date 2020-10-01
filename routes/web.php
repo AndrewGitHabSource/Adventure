@@ -55,3 +55,5 @@ Route::post('/subscribe', [Controllers\CommonController::class, 'subscribe'])->n
 Route::get('/search-flights', [Controllers\FlightController::class, 'searchFlights'])->name('search.flights');
 
 Route::get('/search-cars', [Controllers\CarController::class, 'searchCars'])->name('search.cars');
+
+Route::get('/search-hotels', [Controllers\HotelController::class, 'searchHotels'])->name('search.hotels');

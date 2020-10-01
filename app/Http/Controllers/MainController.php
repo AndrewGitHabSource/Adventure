@@ -11,7 +11,7 @@ use App\Models\Restaurant;
 class MainController extends Controller
 {
     public function index(){
-        $hotels = Hotel::popular();
+        $hotels = Hotel::with('galleries')->popular();
         $places = Place::popular();
         $restaurants = Restaurant::recommended();
 

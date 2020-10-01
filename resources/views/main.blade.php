@@ -83,11 +83,11 @@
                                                     </div>
 
                                                     <select name="travelers" id="" class="form-control">
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -106,43 +106,62 @@
                         </div>
 
                         <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
-                            <form action="#" class="search-destination">
+                            <form action="{{ route('search.hotels') }}" class="search-destination">
                                 <div class="row">
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Check In</label>
+                                            <label for="start_date">Check In</label>
+
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date" placeholder="Check In">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input name="start_date" id="start_date" type="text" class="form-control checkin_date" placeholder="Check In">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Check Out</label>
+                                            <label for="end_date">Check Out</label>
+
                                             <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date" placeholder="From">
+                                                <div class="icon">
+                                                    <span class="icon-map-marker"></span>
+                                                </div>
+
+                                                <input name="end_date" id="end_date" type="text" class="form-control checkout_date" placeholder="From">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-items-end">
                                         <div class="form-group">
-                                            <label for="#">Guest</label>
+                                            <label for="guests">Guest</label>
+
                                             <div class="form-field">
                                                 <div class="select-wrap">
-                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
+                                                    <div class="icon">
+                                                        <span class="ion-ios-arrow-down"></span>
+                                                    </div>
+
+                                                    <select name="guests" id="guests" class="form-control">
+                                                        <option value="1">1</option>
+
+                                                        <option value="2">2</option>
+
+                                                        <option value="3">3</option>
+
+                                                        <option value="4">4</option>
+
+                                                        <option value="5">5</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-md align-self-end">
                                         <div class="form-group">
                                             <div class="form-field">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\HotelFilter;
 use App\Models\Hotel;
 use App\Http\Requests\FormAvailability;
 use App\Models\AvailabilityHotels;
@@ -41,5 +42,11 @@ class HotelController extends Controller
         ]);
 
         return redirect()->back()->with('success_message', 'Your request has been sent! We will contact with you.');
+    }
+
+    public function searchHotels(HotelFilter $request, Request $requestS){
+        $hotels = Hotel::filter($request)->paginate(3, ['hotels.id']);
+
+        return view('hotel.hotels', ['hotels' => $hotels]);
     }
 }

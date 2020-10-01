@@ -639,5 +639,40 @@ class DatabaseSeeder extends Seeder
                 'date_end' => Carbon::parse('18-08-2020')
             ],
         ]);
+
+        DB::table('available_rooms')->insert([
+            [
+                'floor' => 1,
+                'beds' => 2,
+                'number' => 1,
+                'hotel_id' => 1
+            ],
+            [
+                'floor' => 1,
+                'beds' => 2,
+                'number' => 2,
+                'hotel_id' => 1
+            ],
+            [
+                'floor' => 2,
+                'beds' => 1,
+                'number' => 3,
+                'hotel_id' => 1
+            ],
+            [
+                'floor' => 2,
+                'beds' => 2,
+                'number' => 4,
+                'hotel_id' => 1
+            ]
+        ]);
+
+        DB::table('bookings')->insert([
+            [
+                'start_date' => Carbon::parse('28-09-2020'),
+                'end_date' => Carbon::parse('30-09-2020'),
+                'available_room_id' => 2,
+            ],
+        ]);
     }
 }

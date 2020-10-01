@@ -7,6 +7,7 @@
                 <div class="col-lg-3 sidebar order-md-last ftco-animate">
                     <div class="sidebar-wrap ftco-animate">
                         <h3 class="heading mb-4">Find City</h3>
+
                         <form action="#">
                             <div class="fields">
                                 <div class="form-group">
@@ -183,7 +184,7 @@
                     <div class="row mt-5">
                         <div class="col text-center">
                             <div class="block-27">
-                                {{ $hotels->links() }}
+                                {{ $hotels->appends(request()->query())->links() }}
                             </div>
                         </div>
                     </div>

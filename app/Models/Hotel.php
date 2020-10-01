@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use App\Gallery;
 
 class Hotel extends Model
 {
@@ -15,6 +16,11 @@ class Hotel extends Model
     public function rooms()
     {
         return $this->hasMany('App\Models\Room');
+    }
+
+    public function ARooms()
+    {
+        return $this->hasMany('App\Models\ARooms');
     }
 
     public function ratings()
@@ -43,5 +49,10 @@ class Hotel extends Model
 
     public function scopeBySlug($query, $slug){
         return $query->where('slug', $slug)->first();
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filters)
+    {
+        return $filters->apply($builder);
     }
 }
