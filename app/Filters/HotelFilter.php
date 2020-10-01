@@ -15,6 +15,10 @@ class HotelFilter extends QueryFilter
         $this->set_all_values = true;
     }
 
+    public function guests($value){
+        $this->builder->where('available_rooms.beds', '>=', $value->guests);
+    }
+
     public function start_date($value)
     {
         $this->builder->with('galleries')

@@ -57,3 +57,5 @@ Route::get('/search-flights', [Controllers\FlightController::class, 'searchFligh
 Route::get('/search-cars', [Controllers\CarController::class, 'searchCars'])->name('search.cars');
 
 Route::get('/search-hotels', [Controllers\HotelController::class, 'searchHotels'])->name('search.hotels');
+
+Route::any('/hotels-filter', [Controllers\HotelController::class, 'filterHotels'])->name('filter.hotels');

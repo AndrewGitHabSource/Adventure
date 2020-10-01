@@ -117,7 +117,7 @@
                                                     <span class="icon-map-marker"></span>
                                                 </div>
 
-                                                <input name="start_date" id="start_date" type="text" class="form-control checkin_date" placeholder="Check In">
+                                                <input name="start_date" required id="start_date" type="text" class="form-control checkin_date" placeholder="Check In">
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                                                     <span class="icon-map-marker"></span>
                                                 </div>
 
-                                                <input name="end_date" id="end_date" type="text" class="form-control checkout_date" placeholder="From">
+                                                <input name="end_date" required id="end_date" type="text" class="form-control checkout_date" placeholder="From">
                                             </div>
                                         </div>
                                     </div>

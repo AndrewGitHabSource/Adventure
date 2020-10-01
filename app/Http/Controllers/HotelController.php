@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Filters\HotelFilter;
+use App\Filters\HotelFindFilter;
 use App\Models\Hotel;
 use App\Http\Requests\FormAvailability;
 use App\Models\AvailabilityHotels;
-use App\Models\Rating;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -44,9 +44,15 @@ class HotelController extends Controller
         return redirect()->back()->with('success_message', 'Your request has been sent! We will contact with you.');
     }
 
-    public function searchHotels(HotelFilter $request, Request $requestS){
+    public function searchHotels(HotelFilter $request){
         $hotels = Hotel::filter($request)->paginate(3, ['hotels.id']);
 
         return view('hotel.hotels', ['hotels' => $hotels]);
+    }
+
+    public function filterHotels(HotelFindFilter $request){
+        $hotels = Hotel::filter($request)->get();
+
+        return response()->json(array('msg'=> $hotels), 200);
     }
 }
