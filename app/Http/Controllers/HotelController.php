@@ -7,7 +7,8 @@ use App\Filters\HotelFindFilter;
 use App\Models\Hotel;
 use App\Http\Requests\FormAvailability;
 use App\Models\AvailabilityHotels;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Carbon\Carbon;
 
 class HotelController extends Controller
@@ -44,17 +45,23 @@ class HotelController extends Controller
         return redirect()->back()->with('success_message', 'Your request has been sent! We will contact with you.');
     }
 
-    public function searchHotels(HotelFilter $request){
+    public function searchHotels(HotelFilter $request)
+    {
         $hotels = Hotel::filter($request)->paginate(3, ['hotels.id']);
 
         return view('hotel.hotels', ['hotels' => $hotels]);
     }
 
-    public function filterHotels(HotelFindFilter $request){
+    public function filterHotels(HotelFindFilter $request)
+    {
         $hotels = Hotel::filter($request)->paginate(3);
 
-        $returnHTML = view('hotel.filter_html')->with('hotels', $hotels)->render();
+        if (Request::ajax()) {
+            $returnHTML = view('hotel.filter_html')->with('hotels', $hotels)->render();
 
-        return response()->json(array('result'=> $returnHTML), 200);
+            return response()->json(array('result' => $returnHTML), 200);
+        } else {
+            return view('hotel.hotels', ['hotels' => $hotels]);
+        }
     }
 }

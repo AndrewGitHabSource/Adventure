@@ -51,7 +51,7 @@
 <div class="row mt-5">
     <div class="col text-center">
         <div class="block-27">
-            {{ $hotels->appends(request()->query())->links() }}
+            {{ $hotels->appends(request()->except('_token'))->links() }}
         </div>
     </div>
 </div>

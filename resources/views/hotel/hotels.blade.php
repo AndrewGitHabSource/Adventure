@@ -129,7 +129,7 @@
                             </div>
                         </form>
                     </div>
-                </div><!-- END-->
+                </div>
 
                 <div class="col-lg-9 ajax-filter">
                     <div class="row">
@@ -147,7 +147,11 @@
                                         <div class="text p-3">
                                             <div class="d-flex">
                                                 <div class="one">
-                                                    <h3><a href="{{ route('hotel', ['slug' => $hotel->slug]) }}">{{ $hotel->name }}</a></h3>
+                                                    <h3>
+                                                        <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}">
+                                                            {{ $hotel->name }}
+                                                        </a>
+                                                    </h3>
 
                                                     <p class="rate">
                                                         @for ($i = 0; $i < 5; $i++)
@@ -161,8 +165,13 @@
                                                         <span>{{ $hotel->rating }} Rating</span>
                                                     </p>
                                                 </div>
+
                                                 <div class="two">
-                                                    <span class="price per-price">${{ $hotel->price }}<br><small>/night</small></span>
+                                                    <span class="price per-price">
+                                                        ${{ $hotel->price }}<br>
+
+                                                        <small>/night</small>
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -173,7 +182,9 @@
                                             <p class="bottom-area d-flex">
                                                 <span><i class="icon-map-o"></i> {{ Str::limit($hotel->address, 10, '...') }}</span>
 
-                                                <span class="ml-auto"><a href="#">Book Now</a></span>
+                                                <span class="ml-auto">
+                                                    <a href="#">Book Now</a>
+                                                </span>
                                             </p>
                                         </div>
                                     </div>

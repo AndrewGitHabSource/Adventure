@@ -330,18 +330,26 @@ AOS.init({
     $(".sidebar input").bind("keyup change", (e) => {
         e.preventDefault();
 
+        let elementFilter = $('#form-filter');
+        let dataFilter = elementFilter.serialize().replace(/_token=[A-Za-z0-9_]*&/, '');
+        let url = window.location.href.split('?')[0];
+        let newURL = url + "?" + dataFilter;
+
+
         $.ajax({
             type: 'POST',
             url: '/hotels-filter',
-            data: $('#form-filter').serialize(),
+            data: elementFilter.serialize(),
 
             success: function (data) {
-                console.log(data);
-
                 if (data.result) {
+                    newURL = newURL.replace('&&', '&');
+                    newURL = newURL.replace('?&', '?');
+                    history.pushState({}, '', newURL);
+
                     $('.ajax-filter').html(data.result);
                 } else {
-
+                    console.log(data);
                 }
             },
 
