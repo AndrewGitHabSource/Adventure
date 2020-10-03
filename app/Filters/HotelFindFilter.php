@@ -59,26 +59,26 @@ class HotelFindFilter extends QueryFilter
 
     public function country($value)
     {
-        $this->builder->where('country', 'LIKE', "%$value->country%");
+        $this->builder->with('galleries')->where('country', 'LIKE', "%$value->country%");
     }
 
     public function city($value)
     {
-        $this->builder->where('city', 'LIKE', "%$value->city%");
+        $this->builder->with('galleries')->where('city', 'LIKE', "%$value->city%");
     }
 
     public function price_start($value)
     {
-        $this->builder->where('price', '>=', $value->price_start);
+        $this->builder->with('galleries')->where('price', '>=', $value->price_start);
     }
 
     public function price_end($value)
     {
-        $this->builder->where('price', '<=', $value->price_end);
+        $this->builder->with('galleries')->where('price', '<=', $value->price_end);
     }
 
     public function rating($value){
-        $this->builder->where(function ($query) use ($value){
+        $this->builder->with('galleries')->where(function ($query) use ($value){
             foreach ($value->rating as $rating){
                 $query->orWhere('rating', '=', $rating);
             }

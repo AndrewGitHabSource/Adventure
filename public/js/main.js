@@ -335,6 +335,7 @@ AOS.init({
         let url = window.location.href.split('?')[0];
         let newURL = url + "?" + dataFilter;
 
+        $('.loader').css({'display': 'block'});
 
         $.ajax({
             type: 'POST',
@@ -346,17 +347,21 @@ AOS.init({
                     newURL = newURL.replace('&&', '&');
                     newURL = newURL.replace('?&', '?');
                     newURL = newURL.replace('hotels?', 'hotels-filter?');
-                    newURL = newURL.replace('hotel?', 'hotels-filter?');
+                    newURL = newURL.replace(/hotel\/[A-Za-z0-9_]*\?/, 'hotels-filter?');
                     history.pushState({}, '', newURL);
 
                     $('.ajax-filter').html(data.result);
+
+                    $('.loader').css({'display': 'none'});
                 } else {
                     console.log(data);
                 }
+
             },
 
             error: function (error) {
                 console.log(error);
+                $('.loader').css({'display': 'none'});
             }
         });
     });

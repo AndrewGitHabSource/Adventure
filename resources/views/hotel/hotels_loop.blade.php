@@ -1,5 +1,5 @@
 <div class="row">
-    @if ($hotels)
+    @if (count($hotels))
         @foreach ($hotels as $hotel)
             <div class="col-sm col-md-6 col-lg-4">
                 <div class="destination">
@@ -10,6 +10,7 @@
                             <span class="icon-link"></span>
                         </div>
                     </a>
+
                     <div class="text p-3">
                         <div class="d-flex">
                             <div class="one">
@@ -45,6 +46,9 @@
                 </div>
             </div>
         @endforeach
+
+    @else
+         <h2>Nothing found !</h2>
     @endif
 </div>
 
@@ -55,3 +59,5 @@
         </div>
     </div>
 </div>
+
+<img class="loader" src="{{ asset('images/loading.gif') }}">
