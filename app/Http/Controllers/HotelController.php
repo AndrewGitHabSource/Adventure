@@ -82,6 +82,6 @@ class HotelController extends Controller
 
         $userBooking = UserBooking::create($input);
 
-        return redirect()->back()->with('success_message', 'Your rating has been sent!');
+        return redirect()->back()->with('success_message', 'Your booking is being processed!');
     }
 }
