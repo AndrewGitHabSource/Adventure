@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Filters\HotelFilter;
 use App\Filters\HotelFindFilter;
 use App\Models\Hotel;
+use App\Models\UserBooking;
 use App\Http\Requests\FormAvailability;
 use App\Models\AvailabilityHotels;
-//use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Request as RequestFacade;
+use Illuminate\Http\Request as Request;
 use Carbon\Carbon;
 
 class HotelController extends Controller
@@ -56,12 +57,31 @@ class HotelController extends Controller
     {
         $hotels = Hotel::filter($request)->paginate(3);
 
-        if (Request::ajax()) {
+        if (RequestFacade::ajax()) {
             $returnHTML = view('hotel.hotels_loop')->with('hotels', $hotels)->render();
 
             return response()->json(array('result' => $returnHTML), 200);
         } else {
             return view('hotel.hotels', ['hotels' => $hotels]);
         }
+    }
+
+    public function booking(Request $request, $hotel, $room)
+    {
+        return view('booking.booking');
+    }
+
+    public function saveBooking(Request $request){
+        $input = $request->all();
+
+        $date_from = Carbon::createFromFormat('m/d/Y', $request->start_date)->format('Y-m-d');
+        $date_to = Carbon::createFromFormat('m/d/Y', $request->end_date)->format('Y-m-d');
+
+        $input['start_date'] = $date_from;
+        $input['end_date'] = $date_to;
+
+        $userBooking = UserBooking::create($input);
+
+        return redirect()->back()->with('success_message', 'Your rating has been sent!');
     }
 }

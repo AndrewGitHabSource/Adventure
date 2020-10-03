@@ -300,7 +300,14 @@
             </div>
 
             <div>
-                <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+                <p>
+                    On her way she met a copy. The copy warned the Little Blind Text, that where it came from it
+                    would have been rewritten a thousand times and everything that was left from its origin would be
+                    the word "and" and the Little Blind Text should turn around and return to its own, safe country.
+                    But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy
+                    Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where
+                    they abused her for their.
+                </p>
             </div>
         </div>
     </section>
@@ -313,6 +320,7 @@
                         <div class="icon"><span class="flaticon-yatch"></span></div>
                         <div class="media-body">
                             <h3 class="heading mb-3">Special Activities</h3>
+
                             <p>A small river named Duden flows by their place and supplies.</p>
                         </div>
                     </div>
@@ -323,6 +331,7 @@
                         <div class="icon"><span class="flaticon-around"></span></div>
                         <div class="media-body">
                             <h3 class="heading mb-3">Travel Arrangements</h3>
+
                             <p>A small river named Duden flows by their place and supplies.</p>
                         </div>
                     </div>
@@ -333,6 +342,7 @@
                         <div class="icon"><span class="flaticon-compass"></span></div>
                         <div class="media-body">
                             <h3 class="heading mb-3">Private Guide</h3>
+
                             <p>A small river named Duden flows by their place and supplies.</p>
                         </div>
                     </div>
@@ -343,6 +353,7 @@
                         <div class="icon"><span class="flaticon-map-of-roads"></span></div>
                         <div class="media-body">
                             <h3 class="heading mb-3">Location Manager</h3>
+
                             <p>A small river named Duden flows by their place and supplies.</p>
                         </div>
                     </div>
@@ -515,7 +526,7 @@
                                     <span><i class="icon-map-o"></i> {{ Str::limit($hotel->address, 80, '...') }}</span>
 
                                     <span class="ml-auto">
-                                        <a href="#">Book Now</a>
+                                        <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}">Book Now</a>
                                     </span>
                                 </p>
                             </div>

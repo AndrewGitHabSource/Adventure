@@ -59,3 +59,7 @@ Route::get('/search-cars', [Controllers\CarController::class, 'searchCars'])->na
 Route::get('/search-hotels', [Controllers\HotelController::class, 'searchHotels'])->name('search.hotels');
 
 Route::any('/hotels-filter', [Controllers\HotelController::class, 'filterHotels'])->name('filter.hotels');
+
+Route::get('/booking-room/{hotel}/room/{room}', [Controllers\HotelController::class, 'booking'])->name('booking.room');
+
+Route::post('/booking-room', [Controllers\HotelController::class, 'saveBooking'])->name('booking.save');

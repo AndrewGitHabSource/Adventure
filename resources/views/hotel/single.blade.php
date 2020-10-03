@@ -127,12 +127,20 @@
 
                                                         <p>{{ $room->description }}</p>
 
+                                                        <p>Beds: {{ $room->beds }}</p>
+
                                                         <hr>
 
                                                         <p class="bottom-area d-flex">
-                                                            <span><i class="icon-map-o"></i> {{ $room->address }}</span>
+                                                            <span>
+                                                                <i class="icon-map-o"></i> {{ $room->address }}
+                                                            </span>
 
-                                                            <span class="ml-auto"><a href="#">Book Now</a></span>
+                                                            <span class="ml-auto">
+                                                                <a href="{{ route('booking.room', ['hotel' => $hotel->id, 'room' => $room->id]) }}">
+                                                                    Book Now
+                                                                </a>
+                                                            </span>
                                                         </p>
                                                     </div>
                                                 </div>

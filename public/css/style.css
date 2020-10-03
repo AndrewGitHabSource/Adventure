@@ -13206,11 +13206,11 @@ textarea.form-control {
 }
 
 .loader{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     position: absolute;
-    top: 50%;
+    top: 24%;
     left: 50%;
-    transform: translate(-53%, -142%);
+    transform: translate(-50%, -50%);
     display: none;
 }
