@@ -200,6 +200,12 @@
                             <p>
                                 {{ $hotel->description }}
                             </p>
+
+                            <ul>
+                                <li><strong>Country:</strong> {{ $hotel->country }}</li>
+
+                                <li><strong>City:</strong> {{ $hotel->city }}</li>
+                            </ul>
                         </div>
 
                         <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">

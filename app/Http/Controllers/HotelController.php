@@ -57,7 +57,7 @@ class HotelController extends Controller
         $hotels = Hotel::filter($request)->paginate(3);
 
         if (Request::ajax()) {
-            $returnHTML = view('hotel.filter_html')->with('hotels', $hotels)->render();
+            $returnHTML = view('hotel.hotels_loop')->with('hotels', $hotels)->render();
 
             return response()->json(array('result' => $returnHTML), 200);
         } else {

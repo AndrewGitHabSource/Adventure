@@ -345,6 +345,8 @@ AOS.init({
                 if (data.result) {
                     newURL = newURL.replace('&&', '&');
                     newURL = newURL.replace('?&', '?');
+                    newURL = newURL.replace('hotels?', 'hotels-filter?');
+                    newURL = newURL.replace('hotel?', 'hotels-filter?');
                     history.pushState({}, '', newURL);
 
                     $('.ajax-filter').html(data.result);
