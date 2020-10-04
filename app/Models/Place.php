@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
@@ -17,5 +19,10 @@ class Place extends Model
 
     public function scopeBySlug($query, $slug){
         return $query->where('slug', $slug)->first();
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filters)
+    {
+        return $filters->apply($builder);
     }
 }

@@ -66,7 +66,7 @@ class HotelController extends Controller
         }
     }
 
-    public function booking(Request $request, $hotel, $room)
+    public function booking(Request $request)
     {
         return view('booking.booking');
     }

@@ -63,3 +63,6 @@ Route::any('/hotels-filter', [Controllers\HotelController::class, 'filterHotels'
 Route::get('/booking-room/{hotel}/room/{room}', [Controllers\HotelController::class, 'booking'])->name('booking.room');
 
 Route::post('/booking-room', [Controllers\HotelController::class, 'saveBooking'])->name('booking.save');
+
+Route::any('/places-filter', [Controllers\PlaceController::class, 'filterPlaces'])->name('filter.places');
+

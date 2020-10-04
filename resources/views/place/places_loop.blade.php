@@ -1,10 +1,10 @@
 <div class="row">
-    @if (count($hotels))
-        @foreach ($hotels as $hotel)
+    @if($places)
+        @foreach($places as $place)
             <div class="col-sm col-md-6 col-lg-4">
                 <div class="destination">
-                    <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}" class="img img-2 d-flex justify-content-center align-items-center"
-                       style="background-image: url({{ $hotel->galleries[0]->image }});">
+                    <a href="{{ route('place', ['slug' => $place->slug]) }}" class="img img-2 d-flex justify-content-center align-items-center"
+                       style="background-image: url({{ $place->image }});">
 
                         <div class="icon d-flex justify-content-center align-items-center">
                             <span class="icon-link"></span>
@@ -15,51 +15,49 @@
                         <div class="d-flex">
                             <div class="one">
                                 <h3>
-                                    <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}">
-                                        {{ $hotel->name }}
-                                    </a>
+                                    <a href="{{ route('place', ['slug' => $place->slug]) }}">{{ $place->city }}, {{ $place->country }}</a>
                                 </h3>
 
                                 <p class="rate">
                                     @for ($i = 0; $i < 5; $i++)
-                                        @if($i < $hotel->rating)
+                                        @if($i < $place->rating)
                                             <i class="icon-star"></i>
                                         @else
                                             <i class="icon-star-o"></i>
                                         @endif
                                     @endfor
 
-                                    <span>{{ $hotel->rating }} Rating</span>
+                                    <span>{{ $place->rating }} Rating</span>
                                 </p>
                             </div>
+
                             <div class="two">
-                                <span class="price per-price">${{ $hotel->price }}<br><small>/night</small></span>
+                                <span class="price">${{ $place->price }}</span>
                             </div>
                         </div>
 
-                        <p>{{ Str::limit($hotel->description, 180, '...') }}</p>
+                        <p>{{ Str::limit($place->description, 180, '...') }}</p>
+
+                        <p class="days"><span>{{ $place->period }}</span></p>
 
                         <hr>
 
                         <p class="bottom-area d-flex">
-                            <span><i class="icon-map-o"></i> {{ Str::limit($hotel->address, 10, '...') }}</span>
+                            <span><i class="icon-map-o"></i> {{ $place->address }}</span>
 
-                            <span class="ml-auto"><a href="{{ route('hotel', ['slug' => $hotel->slug]) }}">Book Now</a></span>
+                            <span class="ml-auto"><a href="#">Discover</a></span>
                         </p>
                     </div>
                 </div>
             </div>
         @endforeach
-
-    @else
-         <h2>Nothing found !</h2>
     @endif
 </div>
 
 <div class="row mt-5">
     <div class="col text-center">
         <div class="block-27">
-            {{ $hotels->appends(request()->except('_token'))->links() }}
+            {{ $places->appends(request()->except('_token'))->links() }}
         </div>
     </div>
 </div>

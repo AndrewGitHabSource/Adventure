@@ -327,6 +327,14 @@ AOS.init({
         $comment.find('.reply-form').toggle();
     });
 
+    var modelFilter = 'hotels';
+
+    if ($('#form-filter').hasClass('places-filter')){
+         modelFilter = 'places';
+    } else{
+        modelFilter = 'hotels';
+    }
+
     $(".sidebar input").bind("keyup change", (e) => {
         e.preventDefault();
 
@@ -339,14 +347,14 @@ AOS.init({
 
         $.ajax({
             type: 'POST',
-            url: '/hotels-filter',
+            url: `/${modelFilter}-filter`,
             data: elementFilter.serialize(),
 
             success: function (data) {
                 if (data.result) {
                     newURL = newURL.replace('&&', '&');
                     newURL = newURL.replace('?&', '?');
-                    newURL = newURL.replace('hotels?', 'hotels-filter?');
+                    newURL = newURL.replace(`${modelFilter}?`, `${modelFilter}-filter?`);
                     newURL = newURL.replace(/hotel\/[A-Za-z0-9_]*\?/, 'hotels-filter?');
                     history.pushState({}, '', newURL);
 
