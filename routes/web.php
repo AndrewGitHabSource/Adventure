@@ -66,9 +66,9 @@ Route::post('/booking-room', [Controllers\HotelController::class, 'saveBooking']
 
 Route::any('/places-filter', [Controllers\PlaceController::class, 'filterPlaces'])->name('filter.places');
 
-Route::middleware(['auth:sanctum', 'admin'])->get('/admin', function () {
-    return view('dashboard');
-})->name('admin.panel');
+Route::middleware(['auth:sanctum','admin'])->group(function(){
+    Route::get('/admin', [Controllers\Admin\MainController::class, 'index']);
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
