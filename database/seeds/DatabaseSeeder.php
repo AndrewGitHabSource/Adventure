@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
                 'name' => 'John Doe',
                 'login' => 'Admin',
                 'email' => 'gmail@gmail.com',
-                'photo' => '/images/person_1.jpg',
+                'profile_photo_path' => '/images/person_1.jpg',
                 'info' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem 
                            necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente 
                            consectetur similique, inventore eos fugit cupiditate numquam!',
                 'is_admin' => true,
-                'password' => '11'
+                'password' => Hash::make('11')
             ]
         ]);
 
