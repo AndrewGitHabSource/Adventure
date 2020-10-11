@@ -68,6 +68,8 @@ Route::any('/places-filter', [Controllers\PlaceController::class, 'filterPlaces'
 
 Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::get('/admin', [Controllers\Admin\MainController::class, 'index']);
+
+    Route::get('/admin/hotels', [Controllers\Admin\HotelController::class, 'listHotels']);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Filters\CarFilter;
 use App\Http\Controllers\Controller;
 
 class MainController extends Controller
