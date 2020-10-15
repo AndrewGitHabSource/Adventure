@@ -9,11 +9,16 @@ use App\Repository\Repository;
 
 class HotelController extends Controller
 {
+    public $repository = null;
+
+    public function __construct()
+    {
+        $this->repository = new Repository('App\Models\Hotel');
+    }
+
     public function index(Request $request)
     {
-        $repository = new Repository('App\Models\Hotel');
-
-        $hotels = $repository->getAll();
+        $hotels = $this->repository->getAll();
 
         return view('admin.hotel.list', ['hotels' => $hotels]);
     }

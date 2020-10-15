@@ -18,7 +18,7 @@ class Repository implements RepositoryInterface
     }
 
     public function getAll(){
-        return $this->model::all();
+        return $this->model::paginate(15);
     }
 
     public function update(){

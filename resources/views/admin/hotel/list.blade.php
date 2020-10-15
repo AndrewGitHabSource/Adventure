@@ -79,6 +79,10 @@
                                         @endif
                                     </tbody>
                                 </table>
+
+                                <div class="pagination">
+                                    {{ $hotels->appends(request()->except('_token'))->links() }}
+                                </div>
                             </div>
                         </div>
                     </div>
