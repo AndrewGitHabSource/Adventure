@@ -3,6 +3,8 @@
 namespace App\Interfaces;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
+
 
 interface RepositoryInterface
 {
@@ -12,7 +14,7 @@ interface RepositoryInterface
 
     public function update();
 
-    public function insert();
+    public function insert(Request $request, $generateSlug);
 
     public function delete();
 }

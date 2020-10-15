@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hotel extends Model
 {
+    protected $guarded = ['id'];
+
     public function galleries()
     {
         return $this->hasMany('App\Models\Gallery');

@@ -59,7 +59,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admin/hotels" class="nav-link">
+                            <a href="/admin/hotels/create" class="nav-link">
 
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Hotel</p>

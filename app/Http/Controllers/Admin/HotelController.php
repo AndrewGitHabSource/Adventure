@@ -30,7 +30,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-
+        return view('admin.hotel.create');
     }
 
     /**
@@ -41,7 +41,14 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $this->repository->insert($request, true);
+
+        if ($result){
+            return redirect()->route('hotels.index')->with('success_message', 'Hotel Saved');
+        }
+        else{
+            return redirect()->back()->with('error', 'Error');
+        }
     }
 
     /**
