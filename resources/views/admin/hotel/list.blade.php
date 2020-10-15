@@ -16,7 +16,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item">
-                                <a href="#">Home</a>
+                                <a href="/admin">Home</a>
                             </li>
 
                             <li class="breadcrumb-item active">List Hotels</li>
@@ -49,66 +49,34 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Name</th>
 
-                                            <th>User</th>
+                                            <th>Address</th>
 
-                                            <th>Date</th>
+                                            <th>Price</th>
 
-                                            <th>Status</th>
+                                            <th>Country</th>
 
-                                            <th>Reason</th>
+                                            <th>City</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td>183</td>
+                                        @if (count($hotels))
+                                            @foreach($hotels as $hotel)
+                                                <tr>
+                                                    <td>{{ $hotel->name }}</td>
 
-                                            <td>John Doe</td>
+                                                    <td>{{ $hotel->address }}</td>
 
-                                            <td>11-7-2014</td>
+                                                    <td>{{ $hotel->price }}</td>
 
-                                            <td><span class="tag tag-success">Approved</span></td>
+                                                    <td>{{ $hotel->country }}</td>
 
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>219</td>
-
-                                            <td>Alexander Pierce</td>
-
-                                            <td>11-7-2014</td>
-
-                                            <td><span class="tag tag-warning">Pending</span></td>
-
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>657</td>
-
-                                            <td>Bob Doe</td>
-
-                                            <td>11-7-2014</td>
-
-                                            <td><span class="tag tag-primary">Approved</span></td>
-
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>175</td>
-
-                                            <td>Mike Doe</td>
-
-                                            <td>11-7-2014</td>
-
-                                            <td><span class="tag tag-danger">Denied</span></td>
-
-                                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                                        </tr>
+                                                    <td>{{ $hotel->city }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
