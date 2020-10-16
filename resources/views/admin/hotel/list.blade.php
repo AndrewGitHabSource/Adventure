@@ -35,12 +35,16 @@
                                 <h3 class="card-title">Responsive Hover Table</h3>
 
                                 <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 150px;">
-                                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                    <div class="input-group input-group-sm" style="width: 280px;">
+                                        <form name="form" method="get" action="{{ route('hotel.search') }}" style="width: 100%; display: flex;">
+                                            <input type="text" name="search" value="@if(request()->search){{request()->search}}@endif" class="form-control float-right" placeholder="Search">
 
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                        </div>
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-default">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +62,8 @@
                                             <th>Country</th>
 
                                             <th>City</th>
+
+                                            <th>Control</th>
                                         </tr>
                                     </thead>
 
@@ -74,6 +80,12 @@
                                                     <td>{{ $hotel->country }}</td>
 
                                                     <td>{{ $hotel->city }}</td>
+
+                                                    <td>
+                                                        <a href="">Delete</a><br>
+
+                                                        <a href="{{ route('hotels.edit', ['hotel' => $hotel]) }}">Edit</a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         @endif

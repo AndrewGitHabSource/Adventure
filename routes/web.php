@@ -69,9 +69,11 @@ Route::any('/places-filter', [Controllers\PlaceController::class, 'filterPlaces'
 Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::get('/admin', [Controllers\Admin\MainController::class, 'index']);
 
-    Route::resource('admin/hotels', \Admin\HotelController::class);
+    Route::post('/admin/upload-images-editor', [Controllers\Admin\AdminController::class, 'imageEditorUpload'])->name('image.editor.upload');
 
-//    Route::get('/admin/hotels', [Controllers\Admin\HotelController::class, 'listHotels']);
+    Route::any('/admin/hotels/search', [Controllers\Admin\HotelController::class, 'search'])->name('hotel.search');
+
+    Route::resource('admin/hotels', \Admin\HotelController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

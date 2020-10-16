@@ -28,7 +28,34 @@ $(function () {
   })
 
   // bootstrap WYSIHTML5 - text editor
-  $('.textarea').summernote()
+  $('.textarea').summernote({
+    height: 200,
+    callbacks: {
+      onImageUpload: function(files, editor, welEditable) {
+        sendFile(files[0], editor, welEditable);
+      }
+    }
+  });
+
+  function sendFile(file, editor, welEditable) {
+    var data = new FormData();
+    data.append("file", file);
+
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: data,
+      type: "POST",
+      url: "/admin/upload-images-editor",
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(url) {
+        $('.textarea').summernote('editor.insertImage', url);
+      }
+    });
+  }
 
   $('.daterange').daterangepicker({
     ranges   : {

@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 interface RepositoryInterface
 {
-    public function get($slug);
+    public function get($id);
 
     public function getAll();
 
-    public function update();
+    public function update(Request $request, $id);
 
     public function insert(Request $request, $generateSlug);
 
