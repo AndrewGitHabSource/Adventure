@@ -16,5 +16,5 @@ interface RepositoryInterface
 
     public function insert(Request $request, $generateSlug);
 
-    public function delete();
+    public function delete($id);
 }

@@ -53,17 +53,6 @@ class HotelController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
@@ -103,7 +92,14 @@ class HotelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->repository->delete($id);
+
+        if ($result){
+            return redirect()->route('hotels.index')->with('success_message', 'Hotel Deleted');
+        }
+        else{
+            return redirect()->back()->with('error', 'Error');
+        }
     }
 
     public function search(Request $request){

@@ -82,7 +82,13 @@
                                                     <td>{{ $hotel->city }}</td>
 
                                                     <td>
-                                                        <a href="">Delete</a><br>
+                                                        <form method="post" action="{{ route('hotels.destroy', ['hotel' => $hotel]) }}">
+                                                            @csrf
+                                                            @method('DELETE')
+
+                                                            <button type="submit">Delete</button>
+{{--                                                            <a href="">Delete</a><br>--}}
+                                                        </form>
 
                                                         <a href="{{ route('hotels.edit', ['hotel' => $hotel]) }}">Edit</a>
                                                     </td>

@@ -49,8 +49,8 @@ class Repository implements RepositoryInterface
         return $this->model::create($input);
     }
 
-    public function delete(){
-
+    public function delete($id){
+        return $this->model::find($id)->delete();
     }
 }
 
