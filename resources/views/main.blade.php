@@ -483,7 +483,7 @@
                 @foreach($hotels as $hotel)
                     <div class="col-sm col-md-6 col-lg ftco-animate">
                         <div class="destination @if ($loop->iteration % 2 == 0) {{ 'd-md-flex flex-column-reverse' }} @endif">
-                            <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ asset($hotel->galleries[0]->image) }});">
+                            <a href="{{ route('hotel', ['slug' => $hotel->slug]) }}" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(' @if(count($hotel->galleries)) {{ asset($hotel->galleries[0]->image) }} @endif ');">
                                 <div class="icon d-flex justify-content-center align-items-center">
                                     <span class="icon-link"></span>
                                 </div>

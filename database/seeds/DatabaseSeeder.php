@@ -664,7 +664,43 @@ class DatabaseSeeder extends Seeder
                 'beds' => 2,
                 'number' => 4,
                 'hotel_id' => 1
-            ]
+            ],
+            [
+                'floor' => 2,
+                'beds' => 2,
+                'number' => 5,
+                'hotel_id' => 1
+            ],
+            [
+                'floor' => 3,
+                'beds' => 2,
+                'number' => 6,
+                'hotel_id' => 1
+            ],
+            [
+                'floor' => 3,
+                'beds' => 2,
+                'number' => 7,
+                'hotel_id' => 2
+            ],
+            [
+                'floor' => 4,
+                'beds' => 2,
+                'number' => 8,
+                'hotel_id' => 2
+            ],
+            [
+                'floor' => 1,
+                'beds' => 2,
+                'number' => 2,
+                'hotel_id' => 2
+            ],
+            [
+                'floor' => 1,
+                'beds' => 3,
+                'number' => 2,
+                'hotel_id' => 2
+            ],
         ]);
 
         DB::table('bookings')->insert([
@@ -672,6 +708,12 @@ class DatabaseSeeder extends Seeder
                 'start_date' => Carbon::parse('28-09-2020'),
                 'end_date' => Carbon::parse('30-09-2020'),
                 'available_room_id' => 2,
+            ],
+
+            [
+                'start_date' => Carbon::parse('18-10-2020'),
+                'end_date' => Carbon::parse('21-10-2020'),
+                'available_room_id' => 1,
             ],
         ]);
     }

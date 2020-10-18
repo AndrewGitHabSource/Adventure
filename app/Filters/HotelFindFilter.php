@@ -34,14 +34,20 @@ class HotelFindFilter extends QueryFilter
                 ->groupBy('hotels.id', 'hotels.slug', 'hotels.name', 'hotels.address', 'hotels.description', 'hotels.price', 'hotels.country', 'hotels.city', 'hotels.rating', 'hotels.video', 'hotels.popular')
                 ->leftJoin('available_rooms', 'hotels.id', '=', 'available_rooms.hotel_id')
                 ->leftJoin('bookings', 'available_rooms.id', '=', 'bookings.available_room_id')
-                ->where(function ($query) use ($value) {
-                    $query->whereDate('start_date', '<', Carbon::parse($value->start_date))
-                        ->whereDate('end_date', '<', Carbon::parse($value->end_date));
-                })
-                ->orWhere(function ($query) use ($value) {
-                    $query->whereDate('start_date', '>', Carbon::parse($value->start_date))
-                        ->whereDate('end_date', '>', Carbon::parse($value->end_date));
-                })->orWhereNull('bookings.available_room_id');
+                ->where(function($query) use ($value) {
+                    $query->where(function ($query) use ($value) {
+
+                            $query->whereDate('start_date', '<', Carbon::parse($value->start_date))
+                                  ->whereDate('end_date', '<', Carbon::parse($value->end_date));
+
+                            })->orWhere(function ($query) use ($value) {
+
+                                $query->whereDate('start_date', '>', Carbon::parse($value->start_date))
+                                      ->whereDate('end_date', '>', Carbon::parse($value->end_date));
+
+                            })->orWhereNull('bookings.available_room_id');
+
+                });
         }
     }
 
@@ -77,9 +83,10 @@ class HotelFindFilter extends QueryFilter
         $this->builder->with('galleries')->where('price', '<=', $value->price_end);
     }
 
-    public function rating($value){
-        $this->builder->with('galleries')->where(function ($query) use ($value){
-            foreach ($value->rating as $rating){
+    public function rating($value)
+    {
+        $this->builder->with('galleries')->where(function ($query) use ($value) {
+            foreach ($value->rating as $rating) {
                 $query->orWhere('rating', '=', $rating);
             }
         });

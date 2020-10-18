@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\ARooms;
+use App\Models\Hotel;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use App\Observers\HotelObserver;
+use App\Observers\AroomsObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+        Hotel::observe(HotelObserver::class);
+        ARooms::observe(AroomsObserver::class);
     }
 }

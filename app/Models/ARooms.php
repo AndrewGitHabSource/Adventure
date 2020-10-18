@@ -11,9 +11,11 @@ class ARooms extends Model
 
     protected $table = 'available_rooms';
 
+    protected $fillable = ['hotel_id'];
+
     public function bookings()
     {
-        return $this->hasMany('App\Models\Booking');
+        return $this->hasMany('App\Models\Booking', 'available_room_id');
     }
 
     public function hotel()

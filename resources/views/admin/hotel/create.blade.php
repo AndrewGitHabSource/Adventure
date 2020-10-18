@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="post" action="{{ route('hotels.store') }}" role="form">
+                                <form method="post" action="{{ route('hotels.store') }}" role="form" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="row">
@@ -81,6 +81,10 @@
                                                 <label>Video</label>
 
                                                 <input name="video" type="text" class="form-control" placeholder="Enter Country">
+                                            </div>
+
+                                            <div class="hotel-gallery" style="margin-bottom: 15px;">
+                                                <input type="file" name="images[]" multiple id="select_file" />
                                             </div>
 
                                             <div class="card-footer">

@@ -7,7 +7,39 @@
 
 $(function () {
 
-  'use strict'
+  'use strict';
+
+  $('.search-input').bind("keyup change", (e) => {
+    e.preventDefault();
+
+    let elementFilter = $('#search-form');
+    let dataFilter = elementFilter.serialize().replace(/_token=[A-Za-z0-9_]*&/, '');
+    let url = window.location.href.split('?')[0];
+    let newURL = url + "?" + dataFilter;
+
+    $.ajax({
+      type: 'GET',
+      url: `/admin/hotels/search`,
+      data: elementFilter.serialize(),
+
+      success: function (data) {
+        if (data.result) {
+          newURL = newURL.replace(`hotels?`, `hotels/search?`);
+          history.pushState({}, '', newURL);
+
+          console.log(data);
+
+          $('.search-ajax').html(data.result);
+        } else {
+          console.log(data);
+        }
+      },
+
+      error: function (error) {
+        console.log(error);
+      }
+    });
+  });
 
   // Make the dashboard widgets sortable Using jquery UI
   $('.connectedSortable').sortable({
@@ -287,5 +319,4 @@ $(function () {
       options: salesGraphChartOptions
     }
   )
-
-})
+});

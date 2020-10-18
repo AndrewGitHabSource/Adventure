@@ -32,7 +32,7 @@ class Hotel extends Model
 
     public function availability_hotels()
     {
-        return $this->hasMany('App\Models\Availability_hotels');
+        return $this->hasMany('App\Models\AvailabilityHotels');
     }
 
     public function parent_hotels()

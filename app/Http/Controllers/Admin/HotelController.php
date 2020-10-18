@@ -43,11 +43,16 @@ class HotelController extends Controller
     public function store(StoreHotel $request)
     {
         $result = $this->repository->insert($request, true);
+        $imageUrls = array();
 
-        if ($result){
-            return redirect()->route('hotels.index')->with('success_message', 'Hotel Saved');
+        if ($request->images) {
+            $imageUrls = $this->repository->ImagesUpload($request, $request->images);
+            $this->repository->insertRelationOneToMany('galleries', $result, $imageUrls);
         }
-        else{
+
+        if ($result) {
+            return redirect()->route('hotels.index')->with('success_message', 'Hotel Saved');
+        } else {
             return redirect()->back()->with('error', 'Error');
         }
     }
@@ -76,10 +81,9 @@ class HotelController extends Controller
     {
         $result = $this->repository->update($request, $id);
 
-        if ($result){
+        if ($result) {
             return redirect()->route('hotels.index')->with('success_message', 'Hotel Saved');
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Error');
         }
     }
@@ -94,17 +98,23 @@ class HotelController extends Controller
     {
         $result = $this->repository->delete($id);
 
-        if ($result){
+        if ($result) {
             return redirect()->route('hotels.index')->with('success_message', 'Hotel Deleted');
-        }
-        else{
+        } else {
             return redirect()->back()->with('error', 'Error');
         }
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $hotels = $this->repository->search($request->search, ['name', 'address', 'country', 'city']);
 
-        return view('admin.hotel.list', ['hotels' => $hotels]);
+        if ($request->ajax()) {
+            $returnHTML = view('admin.hotel.hotels_loop')->with('hotels', $hotels)->render();
+
+            return response()->json(array('result' => $returnHTML), 200);
+        } else {
+            return view('admin.hotel.list', ['hotels' => $hotels]);
+        }
     }
 }

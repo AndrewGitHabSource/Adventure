@@ -11,6 +11,6 @@ class Booking extends Model
 
     public function ARooms()
     {
-        return $this->belongsTo('App\Models\ARooms');
+        return $this->belongsTo('App\Models\ARooms', 'available_room_id');
     }
 }

@@ -3,14 +3,18 @@
 namespace App\Repository;
 
 use App\Interfaces\RepositoryInterface;
+use App\Repository\Relation\Relation;
 use Illuminate\Http\Request;
 use App\Repository\Helper;
 use App\Repository\Search\Searchable;
+use App\Repository\Image\ImageUpload;
+
 
 
 class Repository implements RepositoryInterface
 {
     use Searchable;
+    use ImageUpload;
 
     private $model = null;
     private $helper = null;
@@ -51,6 +55,14 @@ class Repository implements RepositoryInterface
 
     public function delete($id){
         return $this->model::find($id)->delete();
+    }
+
+    public function insertRelationOneToMany($childModel, $parentModel, $arrayList){
+        $relation = new Relation($arrayList);
+
+        $relation->setParentModel($parentModel);
+        $relation->setRelation($childModel);
+        $relation->insertOneToMany();
     }
 }
 
