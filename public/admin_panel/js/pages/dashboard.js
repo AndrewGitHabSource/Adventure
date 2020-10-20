@@ -32,8 +32,6 @@ $(function () {
                 if (data.result) {
                     history.pushState({}, '', newURL);
 
-                    console.log(data);
-
                     $('.search-ajax').html(data.result);
                 } else {
                     console.log(data);
@@ -63,8 +61,6 @@ $(function () {
             contentType: false,
             dataType: "json",
             complete: function (response, error) {
-                console.log(response);
-
                 if (response.responseText) {
                     let html = JSON.parse(response.responseText);
                     $('.hotel-gallery .row').append(html.result);
@@ -97,8 +93,6 @@ $(function () {
             contentType: false,
             dataType: "json",
             complete: function (response, error) {
-                console.log(response);
-
                 $(e.target).closest('.col-md-3').remove();
 
                 if (response.result) {

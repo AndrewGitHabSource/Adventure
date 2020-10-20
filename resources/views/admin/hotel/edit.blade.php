@@ -45,23 +45,19 @@
                                             <div class="form-group">
                                                 <label>Name*</label>
 
-                                                <input required value="{{ $hotel->name }}" name="name" type="text"
-                                                       class="form-control" placeholder="Enter Name Hotel">
+                                                <input required value="{{ $hotel->name }}" name="name" type="text" class="form-control" placeholder="Enter Name Hotel">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Address*</label>
 
-                                                <input value="{{ $hotel->address }}" required name="address" type="text"
-                                                       class="form-control" placeholder="Enter Address Hotel">
+                                                <input value="{{ $hotel->address }}" required name="address" type="text" class="form-control" placeholder="Enter Address Hotel">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Description</label>
 
-                                                <textarea name="description" class="textarea"
-                                                          placeholder="Place some text here"
-                                                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                                                <textarea name="description" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
                                                     {{ $hotel->description }}
                                                 </textarea>
                                             </div>
