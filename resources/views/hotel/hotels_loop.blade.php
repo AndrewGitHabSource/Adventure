@@ -37,7 +37,7 @@
                             </div>
                         </div>
 
-                        <p>{{ Str::limit($hotel->description, 180, '...') }}</p>
+                        <p>{{ Str::limit(strip_tags($hotel->description), 180, '...') }}</p>
 
                         <hr>
 

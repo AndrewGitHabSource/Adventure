@@ -73,6 +73,9 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
 
     Route::any('/admin/hotels/search', [Controllers\Admin\HotelController::class, 'search'])->name('hotel.search');
 
+    Route::post('/admin/upload-hotel-images', [Controllers\Admin\HotelController::class, 'uploadHotelImage'])->name('upload.hotel.images');
+    Route::post('/admin/delete-hotel-images', [Controllers\Admin\HotelController::class, 'deleteHotelImage'])->name('delete.hotel.images');
+
     Route::resource('admin/hotels', \Admin\HotelController::class);
 });
 

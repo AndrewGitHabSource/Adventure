@@ -84,7 +84,7 @@
                                             </div>
 
                                             <div class="hotel-gallery" style="margin-bottom: 15px;">
-                                                <input type="file" name="images[]" multiple id="select_file" />
+                                                <input type="file" name="images[]" multiple />
                                             </div>
 
                                             <div class="card-footer">

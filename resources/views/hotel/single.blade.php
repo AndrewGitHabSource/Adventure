@@ -67,9 +67,7 @@
                                 </span>
                             </p>
 
-                            <p>
-                                {{ $hotel->description }}
-                            </p>
+                            {!! $hotel->description !!}
 
                             <ul>
                                 <li><strong>Country:</strong> {{ $hotel->country }}</li>

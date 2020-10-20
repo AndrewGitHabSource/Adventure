@@ -16,7 +16,7 @@ trait ImageUpload
                 if ($image->isValid()) {
 
                     $request->validate([
-                        'image' => 'mimes:jpeg,png|max:1014',
+                        'image' => 'mimes:jpeg,png|max:5014',
                     ]);
 
                     $fileName = md5(rand(100, 200));
@@ -33,5 +33,10 @@ trait ImageUpload
         }
 
         abort(500, 'Could not upload image :(');
+    }
+
+    public function deleteFile($file){
+        $file_path = public_path() . $file;
+        unlink($file_path);
     }
 }

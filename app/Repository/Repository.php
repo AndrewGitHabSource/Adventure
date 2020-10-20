@@ -10,7 +10,6 @@ use App\Repository\Search\Searchable;
 use App\Repository\Image\ImageUpload;
 
 
-
 class Repository implements RepositoryInterface
 {
     use Searchable;
@@ -25,39 +24,42 @@ class Repository implements RepositoryInterface
         $this->helper = new Helper();
     }
 
-    public function get($id){
+    public function get($id)
+    {
         return $this->model::where('id', '=', $id)->first();
     }
 
-    public function getBySlug($slug){
+    public function getBySlug($slug)
+    {
         return $this->model::BySlug($slug);
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         return $this->model::paginate(15);
     }
 
-    public function update(Request $request, $id){
-        $input = $request->except('_token', '_method', 'files');
-
-        return $this->model::where('id', $id)->update($input);
+    public function update($request, $id)
+    {
+        return $this->model::where('id', $id)->update($request);
     }
 
-    public function insert(Request $request, $generateSlug){
-        $input = $request->except('_token', '_method', 'files');
-
-        if ($generateSlug == true){
-            $input['slug'] = $this->helper->setSlug($this->model, $input['name']);
+    public function insert($request, $generateSlug)
+    {
+        if ($generateSlug == true) {
+            $request['slug'] = $this->helper->setSlug($this->model, $request['name']);
         }
 
-        return $this->model::create($input);
+        return $this->model::create($request);
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         return $this->model::find($id)->delete();
     }
 
-    public function insertRelationOneToMany($childModel, $parentModel, $arrayList){
+    public function insertRelationOneToMany($childModel, $parentModel, $arrayList)
+    {
         $relation = new Relation($arrayList);
 
         $relation->setParentModel($parentModel);

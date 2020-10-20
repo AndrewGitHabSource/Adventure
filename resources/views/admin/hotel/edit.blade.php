@@ -36,8 +36,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="post" action="{{ route('hotels.update', ['hotel' => $hotel->id]) }}"
-                                      role="form">
+                                <form method="post" id="edit-form-hotel" action="{{ route('hotels.update', ['hotel' => $hotel->id]) }}" role="form" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 
@@ -97,12 +96,16 @@
                                                         <div class="row">
                                                             @foreach($hotel->galleries as $item)
                                                                 <div class="col-md-3">
-                                                                    <img src="{{ asset($item->image) }}" style="max-width: 100%; margin-bottom: 10px;">
+                                                                    <img src="{{ asset($item->image) }}">
+
+                                                                    <a href="#" class="icon-delete del-image" id-attr="{{ $item->id }}" file-attr="{{ $item->image }}">Delete</a>
                                                                 </div>
                                                             @endforeach
                                                         </div>
                                                     </div>
                                                 @endif
+
+                                                <input type="hidden" name="id" id="hotel_id" value="{{ $hotel->id }}">
 
                                                 <input type="file" name="image" id="select_file" />
                                             </div>

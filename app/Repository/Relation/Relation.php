@@ -12,20 +12,23 @@ class Relation implements RelationInterface
     private $arrayList = array();
     private $parentModel = null;
 
-    public function __construct($arrayList){
+    public function __construct($arrayList)
+    {
         $this->arrayList = $arrayList;
-
     }
 
-    public function setParentModel($parentModel){
+    public function setParentModel($parentModel)
+    {
         $this->parentModel = $parentModel;
     }
 
-    public function setRelation($relation){
+    public function setRelation($relation)
+    {
         $this->relation = $relation;
     }
 
-    public function insertOneToMany(){
+    public function insertOneToMany()
+    {
         $function = $this->relation;
         $this->parentModel->$function()->createMany($this->arrayList);
     }

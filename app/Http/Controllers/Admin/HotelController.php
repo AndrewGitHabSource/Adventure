@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
 use App\Http\Requests\StoreHotel;
+use App\Http\Requests\StoreHotelImage;
+use Illuminate\Support\Facades\Storage;
+
 
 class HotelController extends Controller
 {
@@ -42,7 +45,9 @@ class HotelController extends Controller
      */
     public function store(StoreHotel $request)
     {
-        $result = $this->repository->insert($request, true);
+        $input = $request->except('_token', '_method', 'files');
+
+        $result = $this->repository->insert($input, true);
         $imageUrls = array();
 
         if ($request->images) {
@@ -79,7 +84,9 @@ class HotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $result = $this->repository->update($request, $id);
+        $input = $request->except('_token', '_method', 'files', 'id', 'image');
+
+        $result = $this->repository->update($input, $id);
 
         if ($result) {
             return redirect()->route('hotels.index')->with('success_message', 'Hotel Saved');
@@ -116,5 +123,26 @@ class HotelController extends Controller
         } else {
             return view('admin.hotel.list', ['hotels' => $hotels]);
         }
+    }
+
+    public function uploadHotelImage(StoreHotelImage $request)
+    {
+        $hotel = $this->repository->get($request->hotel_id);
+
+        $imageUrls = $this->repository->ImagesUpload($request, [$request->image]);
+        $this->repository->insertRelationOneToMany('galleries', $hotel, $imageUrls);
+
+        $returnHTML = view('admin.hotel.hotel_image', ['id' => $hotel->id, 'image' => $imageUrls[0]['image']])->render();
+
+        return response()->json(array('result' => $returnHTML), 200);
+    }
+
+    public function deleteHotelImage(Request $request)
+    {
+        $galleryModel = new Repository('App\Models\Gallery');
+        $galleryModel->delete($request->id_file);
+        $galleryModel->deleteFile($request->file);
+
+        return response()->json(array('result' => 'success'), 200);
     }
 }
