@@ -22,9 +22,15 @@ class HotelController extends Controller
 
     public function index(Request $request)
     {
-        $hotels = $this->repository->getAll();
+        $hotels = $this->repository->search($request->search, ['name', 'address', 'country', 'city']);
 
-        return view('admin.hotel.list', ['hotels' => $hotels]);
+        if ($request->ajax()) {
+            $returnHTML = view('admin.hotel.hotels_loop')->with('hotels', $hotels)->render();
+
+            return response()->json(array('result' => $returnHTML), 200);
+        } else {
+            return view('admin.hotel.list', ['hotels' => $hotels]);
+        }
     }
 
     /**
@@ -109,19 +115,6 @@ class HotelController extends Controller
             return redirect()->route('hotels.index')->with('success_message', 'Hotel Deleted');
         } else {
             return redirect()->back()->with('error', 'Error');
-        }
-    }
-
-    public function search(Request $request)
-    {
-        $hotels = $this->repository->search($request->search, ['name', 'address', 'country', 'city']);
-
-        if ($request->ajax()) {
-            $returnHTML = view('admin.hotel.hotels_loop')->with('hotels', $hotels)->render();
-
-            return response()->json(array('result' => $returnHTML), 200);
-        } else {
-            return view('admin.hotel.list', ['hotels' => $hotels]);
         }
     }
 

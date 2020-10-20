@@ -36,7 +36,7 @@
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 280px;">
-                                        <form id="search-form" name="form" method="get" action="{{ route('hotel.search') }}" style="width: 100%; display: flex;">
+                                        <form id="search-form" name="form" method="get" action="{{ route('hotels.index') }}" style="width: 100%; display: flex;">
                                             <input type="text" name="search" value="@if(request()->search){{request()->search}}@endif" class="search-input form-control float-right" placeholder="Search">
 
                                             <div class="input-group-append">

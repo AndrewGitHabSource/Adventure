@@ -25,12 +25,11 @@ $(function () {
 
         $.ajax({
             type: 'GET',
-            url: `/admin/hotels/search`,
+            url: elementFilter.attr('action'),
             data: elementFilter.serialize(),
 
             success: function (data) {
                 if (data.result) {
-                    newURL = newURL.replace(`hotels?`, `hotels/search?`);
                     history.pushState({}, '', newURL);
 
                     console.log(data);
