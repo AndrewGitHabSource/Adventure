@@ -84,6 +84,12 @@
                                                 <input value="{{ $hotel->city }}" required name="city" type="text" class="form-control" placeholder="Enter Country">
                                             </div>
 
+                                            <div class="form-check">
+                                                <input name="popular" class="form-check-input" @if ($hotel->popular){{'checked'}}@endif type="checkbox">
+
+                                                <label class="form-check-label">Popular</label>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label>Video</label>
 

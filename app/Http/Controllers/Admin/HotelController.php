@@ -92,6 +92,12 @@ class HotelController extends Controller
     {
         $input = $request->except('_token', '_method', 'files', 'id', 'image');
 
+        if(isset($input['popular']) && $input['popular'] == 'on'){
+            $input['popular'] = true;
+        }else{
+            $input['popular'] = false;
+        }
+
         $result = $this->repository->update($input, $id);
 
         if ($result) {
