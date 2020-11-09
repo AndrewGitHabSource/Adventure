@@ -3,6 +3,8 @@
         <tr>
             <th>Name</th>
 
+            <th>Country</th>
+
             <th>Control</th>
         </tr>
     </thead>
@@ -12,6 +14,12 @@
         @foreach($cities as $city)
             <tr>
                 <td>{{ $city->name }}</td>
+
+                <td>
+                    @if ($city->country)
+                        {{ $city->country->name }}
+                    @endif
+                </td>
 
                 <td>
                     <form method="post" action="{{ route('cities.destroy', ['city' => $city]) }}">

@@ -32,4 +32,10 @@ class Relation implements RelationInterface
         $function = $this->relation;
         $this->parentModel->$function()->createMany($this->arrayList);
     }
+
+    public function associateBelongTo(){
+        $function = $this->parentModel;
+        $this->relation->$function()->associate($this->arrayList);
+        $this->relation->save();
+    }
 }

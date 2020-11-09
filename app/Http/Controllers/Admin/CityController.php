@@ -38,7 +38,10 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('admin.city.create');
+        $countryRepository = new Repository('App\Models\Country');
+        $countries = $countryRepository->getAll();
+
+        return view('admin.city.create', ['countries' => $countries]);
     }
 
     /**
@@ -51,10 +54,14 @@ class CityController extends Controller
     {
         $input = $request->except('_token', '_method', 'files');
 
-        $result = $this->repository->insert($input, true);
+        $result = $this->repository->insert($input, false);
+
+        if ($request->country) {
+            $this->repository->associate($result, 'country', $request->country);
+        }
 
         if ($result) {
-            return redirect()->route('city.index')->with('success_message', 'City Saved');
+            return redirect()->route('cities.index')->with('success_message', 'City Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -69,8 +76,11 @@ class CityController extends Controller
     public function edit($id)
     {
         $city = $this->repository->get($id);
+        $countryRepository = new Repository('App\Models\Country');
 
-        return view('admin.city.edit', ['city' => $city]);
+        $countries = $countryRepository->getAll();
+
+        return view('admin.city.edit', ['city' => $city, 'countries' => $countries]);
     }
 
     /**
@@ -82,9 +92,12 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->except('_token', '_method');
-
+        $input = $request->except('_token', '_method', 'country');
         $result = $this->repository->update($input, $id);
+
+        if ($request->country) {
+            $this->repository->associate($this->repository->get($id), 'country', $request->country);
+        }
 
         if ($result) {
             return redirect()->route('cities.index')->with('success_message', 'City Saved');

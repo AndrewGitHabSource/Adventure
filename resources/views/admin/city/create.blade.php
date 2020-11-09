@@ -47,6 +47,16 @@
                                                 <input required name="name" type="text" class="form-control" placeholder="Enter Name Hotel">
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Country</label>
+
+                                                <select name="country" class="form-control">
+                                                    @foreach($countries as $country)
+                                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>

@@ -24,6 +24,11 @@ class Repository implements RepositoryInterface
         $this->helper = new Helper();
     }
 
+    public function find($id)
+    {
+        return $this->model::find($id);
+    }
+
     public function get($id)
     {
         return $this->model::where('id', '=', $id)->firstOrFail();
@@ -65,6 +70,15 @@ class Repository implements RepositoryInterface
         $relation->setParentModel($parentModel);
         $relation->setRelation($childModel);
         $relation->insertOneToMany();
+    }
+
+    public function associate($childModel, $parentModel, $arrayList)
+    {
+        $relation = new Relation($arrayList);
+
+        $relation->setParentModel($parentModel);
+        $relation->setRelation($childModel);
+        $relation->associateBelongTo();
     }
 }
 
