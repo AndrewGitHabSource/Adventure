@@ -52,6 +52,7 @@ class HotelController extends Controller
     public function store(StoreHotel $request)
     {
         $input = $request->except('_token', '_method', 'files');
+        $input = $this->repository->checkboxHandler($input, 'popular');
 
         $result = $this->repository->insert($input, true);
         $imageUrls = array();
@@ -91,12 +92,7 @@ class HotelController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->except('_token', '_method', 'files', 'id', 'image');
-
-        if(isset($input['popular']) && $input['popular'] == 'on'){
-            $input['popular'] = true;
-        }else{
-            $input['popular'] = false;
-        }
+        $input = $this->repository->checkboxHandler($input, 'popular');
 
         $result = $this->repository->update($input, $id);
 

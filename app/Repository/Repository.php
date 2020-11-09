@@ -80,5 +80,17 @@ class Repository implements RepositoryInterface
         $relation->setRelation($childModel);
         $relation->associateBelongTo();
     }
+
+    public function checkboxHandler($input, $value){
+        if ($input[$value]){
+            if(isset($input[$value]) && $input[$value] == 'on'){
+                $input[$value] = true;
+            }else{
+                $input[$value] = false;
+            }
+        }
+
+        return $input;
+    }
 }
 
