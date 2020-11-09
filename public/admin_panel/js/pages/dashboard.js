@@ -45,17 +45,25 @@ $(function () {
     });
 
     $('#select_file').on('change', (function (e) {
+        let url = $(this).attr('url-attr');
+        let fileId = $(this).attr('id-attr');
+        let selectOutput = $(this).attr('out-attr');
+
+        sendAjaxFile(url, fileId, selectOutput, e);
+    }));
+
+    function sendAjaxFile(url, fileId, selectOutput, e){
         e.preventDefault();
 
         let formData = new FormData();
         let file = e.target.files[0];
 
         formData.append('image', file);
-        formData.append('hotel_id', $('#hotel_id').val());
+        formData.append(fileId, $('#' + fileId).val());
 
         $.ajax({
             type: 'POST',
-            url: "/admin/upload-hotel-images",
+            url: url,
             data: formData,
             processData: false,
             contentType: false,
@@ -63,7 +71,7 @@ $(function () {
             complete: function (response, error) {
                 if (response.responseText) {
                     let html = JSON.parse(response.responseText);
-                    $('.hotel-gallery .row').append(html.result);
+                    $(selectOutput).append(html.result);
                 } else {
                     console.log(error);
                 }
@@ -72,7 +80,7 @@ $(function () {
                 console.log(error);
             }
         });
-    }));
+    }
 
     $('.del-image').click((e) => {
         e.preventDefault();

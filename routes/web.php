@@ -71,12 +71,11 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
 
     Route::post('/admin/upload-images-editor', [Controllers\Admin\AdminController::class, 'imageEditorUpload'])->name('image.editor.upload');
 
-//    Route::any('/admin/hotels/search', [Controllers\Admin\HotelController::class, 'search'])->name('hotel.search');
-
     Route::post('/admin/upload-hotel-images', [Controllers\Admin\HotelController::class, 'uploadHotelImage'])->name('upload.hotel.images');
     Route::post('/admin/delete-hotel-images', [Controllers\Admin\HotelController::class, 'deleteHotelImage'])->name('delete.hotel.images');
 
     Route::resource('admin/hotels', \Admin\HotelController::class);
+    Route::resource('admin/countries', \Admin\CountryController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

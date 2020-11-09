@@ -109,7 +109,7 @@
 
                                                 <input type="hidden" name="id" id="hotel_id" value="{{ $hotel->id }}">
 
-                                                <input type="file" name="image" id="select_file" />
+                                                <input type="file" name="image" out-attr=".hotel-gallery .row" id-attr="hotel_id" url-attr="/admin/upload-hotel-images" id="select_file" />
                                             </div>
 
                                             <div class="card-footer">
