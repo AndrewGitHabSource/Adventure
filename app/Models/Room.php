@@ -17,6 +17,6 @@ class Room extends Model
     }
 
     public function scopeBySlug($query, $slug){
-        return $query->where('slug', $slug)->first();
+        return $query->where('slug', $slug)->firstOrFail();
     }
 }
