@@ -43,7 +43,7 @@
 
                     <div class="about-author d-flex p-4 bg-light">
                         <div class="bio mr-5">
-                            <img src="{{ asset($post->user->photo) }}" alt="Image placeholder" class="img-fluid mb-4">
+                            <img src="{{ asset($post->user->profile_photo_path) }}" alt="Image placeholder" class="img-fluid mb-4">
                         </div>
 
                         <div class="desc">

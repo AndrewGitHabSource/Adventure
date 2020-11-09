@@ -26,7 +26,7 @@ class Repository implements RepositoryInterface
 
     public function get($id)
     {
-        return $this->model::where('id', '=', $id)->first();
+        return $this->model::where('id', '=', $id)->firstOrFail();
     }
 
     public function getBySlug($slug)
