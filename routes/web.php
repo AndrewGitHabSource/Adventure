@@ -77,6 +77,8 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/hotels', \Admin\HotelController::class);
     Route::resource('admin/countries', \Admin\CountryController::class);
     Route::resource('admin/cities', \Admin\CityController::class);
+    Route::resource('admin/flights', \Admin\FlightController::class);
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

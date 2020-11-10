@@ -125,6 +125,35 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Flights
+
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/flights" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Flights</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admin/flights/create" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Flights</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>
