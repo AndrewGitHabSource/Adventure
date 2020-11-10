@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreCity;
 
 
 class CityController extends Controller
@@ -50,7 +50,7 @@ class CityController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCity $request)
     {
         $input = $request->except('_token', '_method', 'files');
 
@@ -90,7 +90,7 @@ class CityController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCity $request, $id)
     {
         $input = $request->except('_token', '_method', 'country');
         $result = $this->repository->update($input, $id);

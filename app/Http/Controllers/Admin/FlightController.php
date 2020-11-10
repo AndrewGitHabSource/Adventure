@@ -6,6 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
+use App\Http\Requests\StoreFlight;
 
 
 class FlightController extends Controller
@@ -46,7 +47,7 @@ class FlightController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFlight $request)
     {
         $input = $request->except('_token', '_method', 'files');
 
@@ -83,7 +84,7 @@ class FlightController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreFlight $request, $id)
     {
         $input = $request->except('_token', '_method', 'country');
 

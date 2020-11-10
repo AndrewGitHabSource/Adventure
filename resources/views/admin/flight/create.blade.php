@@ -60,9 +60,9 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Time*</label>
+                                                <label>Time</label>
 
-                                                <input required name="time" type="text" class="form-control">
+                                                <input name="time" type="text" class="form-control">
                                             </div>
 
                                             <div class="form-group">

@@ -61,9 +61,9 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Time*</label>
+                                                <label>Time</label>
 
-                                                <input required value="{{ $flight->time }}" name="time" type="text" class="form-control">
+                                                <input value="{{ $flight->time }}" name="time" type="text" class="form-control">
                                             </div>
 
                                             <div class="form-group">

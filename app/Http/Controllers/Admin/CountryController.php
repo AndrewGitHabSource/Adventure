@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreCountry;
 
 
 class CountryController extends Controller
@@ -47,14 +47,14 @@ class CountryController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCountry $request)
     {
         $input = $request->except('_token', '_method', 'files');
 
-        $result = $this->repository->insert($input, true);
+        $result = $this->repository->insert($input, false);
 
         if ($result) {
-            return redirect()->route('country.index')->with('success_message', 'Hotel Saved');
+            return redirect()->route('countries.index')->with('success_message', 'Hotel Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -80,7 +80,7 @@ class CountryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCountry $request, $id)
     {
         $input = $request->except('_token', '_method', 'files', 'id', 'image');
 
