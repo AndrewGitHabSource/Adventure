@@ -19,7 +19,7 @@ class CreateHotelsTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->text('description');
-            $table->decimal('price');
+            $table->float('price');
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->float('rating')->nullable();

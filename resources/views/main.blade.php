@@ -407,7 +407,7 @@
                                         </div>
                                     </div>
 
-                                    <p>{{ $place->description }}</p>
+                                    <p>{!! Str::limit($place->description, 80, '...') !!}</p>
 
                                     <p class="days"><span>2 days 3 nights</span></p>
 
@@ -518,7 +518,7 @@
                                     </div>
                                 </div>
 
-                                <p>{{ $hotel->description }}</p>
+                                <p>{{ Str::limit($hotel->description, 120, '...') }}</p>
 
                                 <hr>
 

@@ -74,11 +74,13 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::post('/admin/upload-hotel-images', [Controllers\Admin\HotelController::class, 'uploadHotelImage'])->name('upload.hotel.images');
     Route::post('/admin/delete-hotel-images', [Controllers\Admin\HotelController::class, 'deleteHotelImage'])->name('delete.hotel.images');
 
+    Route::post('/admin/select-country', [Controllers\Admin\AdminController::class, 'selectCountry'])->name('select.country');
+
     Route::resource('admin/hotels', \Admin\HotelController::class);
     Route::resource('admin/countries', \Admin\CountryController::class);
     Route::resource('admin/cities', \Admin\CityController::class);
     Route::resource('admin/flights', \Admin\FlightController::class);
-
+    Route::resource('admin/places', \Admin\PlaceController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

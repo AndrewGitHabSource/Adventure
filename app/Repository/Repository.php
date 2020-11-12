@@ -44,6 +44,10 @@ class Repository implements RepositoryInterface
         return $this->model::paginate(15);
     }
 
+    public function where($key, $exp, $value){
+        return $this->model::where($key, $exp, $value)->get();
+    }
+
     public function update($request, $id)
     {
         return $this->model::where('id', $id)->update($request);

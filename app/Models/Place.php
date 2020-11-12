@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
+    protected $guarded = ['id'];
+
     public function ratings()
     {
         return $this->morphMany('App\Models\Rating', 'ratingable');

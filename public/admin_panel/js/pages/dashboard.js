@@ -115,6 +115,40 @@ $(function () {
         });
     });
 
+    $('#select_country').bind("change", (e) => {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/select-country',
+            dataType: 'json',
+            data: {
+                'value': e.target.value
+            },
+
+            success: function (data) {
+                console.log(data.result);
+
+                if (data.result) {
+                    let cities = data.result;
+                    let html = '';
+
+                    for (let i = 0; i < cities.length; i++){
+                        html += `<option>${cities[i].name}</option>`;
+                    }
+
+                    $('#select_city').html(html);
+                } else {
+                    console.log(data);
+                }
+            },
+
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
     // Make the dashboard widgets sortable Using jquery UI
     $('.connectedSortable').sortable({
         placeholder: 'sort-highlight',

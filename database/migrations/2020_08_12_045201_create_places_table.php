@@ -22,7 +22,7 @@ class CreatePlacesTable extends Migration
             $table->string('city')->nullable();
             $table->string('address');
             $table->text('description');
-            $table->decimal('price');
+            $table->float('price');
             $table->decimal('rating')->nullable();
             $table->boolean('popular')->nullable();
             $table->string('period');

@@ -29,4 +29,14 @@ class AdminController extends Controller
             }
         }
     }
+
+    public function selectCountry(Request $request){
+        $countryRepository = new Repository('App\Models\Country');
+        $countryId = $countryRepository->where('name', '=', $request->value)[0]->id;
+
+        $cityRepository = new Repository('App\Models\City');
+        $cities = $cityRepository->where('country_id', '=', $countryId);
+
+        return response()->json(array('result' => $cities), 200);
+    }
 }
