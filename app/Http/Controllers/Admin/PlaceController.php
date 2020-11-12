@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StoreCity;
+use App\Http\Requests\StorePlace;
 
 
 class PlaceController extends Controller
@@ -53,7 +53,7 @@ class PlaceController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCity $request)
+    public function store(StorePlace $request)
     {
         $input = $request->except('_token', '_method', 'image');
         $input = $this->repository->checkboxHandler($input, 'popular');
@@ -98,7 +98,7 @@ class PlaceController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreCity $request, $id)
+    public function update(StorePlace $request, $id)
     {
         $input = $request->except('_token', '_method');
         $input = $this->repository->checkboxHandler($input, 'popular');

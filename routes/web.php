@@ -82,6 +82,8 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/flights', \Admin\FlightController::class);
     Route::resource('admin/places', \Admin\PlaceController::class);
     Route::resource('admin/restaurants', \Admin\RestaurantController::class);
+    Route::resource('admin/posts', \Admin\PostController::class);
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

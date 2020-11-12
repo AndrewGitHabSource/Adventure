@@ -6,28 +6,28 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StoreRestaurant;
+use App\Http\Requests\StorePlace;
 
 
-class RestaurantController extends Controller
+class PostController extends Controller
 {
     public $repository = null;
 
     public function __construct()
     {
-        $this->repository = new Repository('App\Models\Restaurant');
+        $this->repository = new Repository('App\Models\Post');
     }
 
     public function index(Request $request)
     {
-        $restaurants = $this->repository->search($request->search, ['name']);
+        $posts = $this->repository->search($request->search, ['title', 'description']);
 
         if ($request->ajax()) {
-            $returnHTML = view('admin.restaurant.restaurants_loop')->with('restaurants', $restaurants)->render();
+            $returnHTML = view('admin.post.posts_loop')->with('posts', $posts)->render();
 
             return response()->json(array('result' => $returnHTML), 200);
         } else {
-            return view('admin.restaurant.list', ['restaurants' => $restaurants]);
+            return view('admin.post.list', ['posts' => $posts]);
         }
     }
 
@@ -38,13 +38,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        $countryRepository = new Repository('App\Models\Country');
-        $countries = $countryRepository->getAll();
-
-        $cityRepository = new Repository('App\Models\City');
-        $cities = $cityRepository->where('country_id', '=', 1);
-
-        return view('admin.restaurant.create', ['countries' => $countries, 'cities' => $cities]);
+        return view('admin.place.create');
     }
 
     /**
@@ -53,10 +47,9 @@ class RestaurantController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRestaurant $request)
+    public function store(StorePlace $request)
     {
         $input = $request->except('_token', '_method', 'image');
-        $input = $this->repository->checkboxHandler($input, 'recommended');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
@@ -65,7 +58,7 @@ class RestaurantController extends Controller
         $result = $this->repository->insert($input, true);
 
         if ($result) {
-            return redirect()->route('restaurants.index')->with('success_message', 'Restaurant Saved');
+            return redirect()->route('posts.index')->with('success_message', 'Post Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -79,16 +72,9 @@ class RestaurantController extends Controller
      */
     public function edit($id)
     {
-        $place = $this->repository->get($id);
+        $post = $this->repository->get($id);
 
-        $countryRepository = new Repository('App\Models\Country');
-        $countries = $countryRepository->getAll();
-
-        $cityRepository = new Repository('App\Models\City');
-        $placeCountryId = $countryRepository->where('name', '=', $place->country)[0]->id;
-        $cities = $cityRepository->where('country_id', '=', $placeCountryId);
-
-        return view('admin.restaurant.edit', ['restaurant' => $place, 'countries' => $countries, 'cities' => $cities]);
+        return view('admin.post.edit', ['post' => $post]);
     }
 
     /**
@@ -98,10 +84,9 @@ class RestaurantController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreRestaurant $request, $id)
+    public function update(Request $request, $id)
     {
         $input = $request->except('_token', '_method');
-        $input = $this->repository->checkboxHandler($input, 'recommended');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
@@ -110,7 +95,7 @@ class RestaurantController extends Controller
         $result = $this->repository->update($input, $id);
 
         if ($result) {
-            return redirect()->route('restaurants.index')->with('success_message', 'Restaurant Saved');
+            return redirect()->route('posts.index')->with('success_message', 'Post Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -127,7 +112,7 @@ class RestaurantController extends Controller
         $result = $this->repository->delete($id);
 
         if ($result) {
-            return redirect()->route('restaurants.index')->with('success_message', 'Restaurant Deleted');
+            return redirect()->route('posts.index')->with('success_message', 'Post Deleted');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
