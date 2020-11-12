@@ -44,7 +44,8 @@ class Repository implements RepositoryInterface
         return $this->model::paginate(15);
     }
 
-    public function where($key, $exp, $value){
+    public function where($key, $exp, $value)
+    {
         return $this->model::where($key, $exp, $value)->get();
     }
 
@@ -85,13 +86,12 @@ class Repository implements RepositoryInterface
         $relation->associateBelongTo();
     }
 
-    public function checkboxHandler($input, $value){
-        if ($input[$value]){
-            if(isset($input[$value]) && $input[$value] == 'on'){
-                $input[$value] = true;
-            }else{
-                $input[$value] = false;
-            }
+    public function checkboxHandler($input, $value)
+    {
+        if (isset($input[$value]) && $input[$value] == 'on') {
+            $input[$value] = true;
+        } else {
+            $input[$value] = false;
         }
 
         return $input;
