@@ -74,6 +74,18 @@
                                                 @endforeach
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Tags</label>
+
+                                                <select name="tags[]" class="select2" data-placeholder="Select a State" multiple="multiple" style="width: 100%;">
+                                                    @foreach($tags as $tag)
+                                                        <option @if ($post->tags->contains($tag->id))
+                                                            {{ 'selected' }}
+                                                        @endif value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
                                             <div style="width: 400px;">
                                                 <img src="{{ $post->image }}" style="max-width: 100%;">
                                             </div>

@@ -84,7 +84,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/restaurants', \Admin\RestaurantController::class);
     Route::resource('admin/posts', \Admin\PostController::class);
     Route::resource('admin/categories', \Admin\CategoryController::class);
-
+    Route::resource('admin/tags', \Admin\TagController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

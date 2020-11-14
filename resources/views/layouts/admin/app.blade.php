@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="{{ asset('admin_panel/plugins/jqvmap/jqvmap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin_panel/css/adminlte.min.css') }}">
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('admin_panel/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin_panel/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('admin_panel/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
@@ -72,6 +77,7 @@
 <!-- daterangepicker -->
 <script src="{{ asset('admin_panel/plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('admin_panel/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('admin_panel/plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('admin_panel/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- Summernote -->
@@ -84,5 +90,6 @@
 <script src="{{ asset('admin_panel/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin_panel/js/demo.js') }}"></script>
+
 </body>
 </html>

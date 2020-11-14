@@ -270,6 +270,35 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Tags
+
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/tags" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Tags</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admin/tags/create" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Tag</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>

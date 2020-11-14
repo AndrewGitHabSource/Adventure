@@ -40,8 +40,10 @@ class PostController extends Controller
     {
         $category = new Repository('App\Models\Category');
         $categories = $category->getAll();
+        $tag = new Repository('App\Models\Tag');
+        $tags = $tag->getAll();
 
-        return view('admin.post.create', ['categories' => $categories]);
+        return view('admin.post.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -52,7 +54,7 @@ class PostController extends Controller
      */
     public function store(StorePost $request)
     {
-        $input = $request->except('_token', '_method', 'image');
+        $input = $request->except('_token', '_method', 'image', 'files');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
@@ -62,6 +64,10 @@ class PostController extends Controller
 
         if ($request->categories) {
             $this->repository->sync($result, 'categories', $request->categories);
+        }
+
+        if ($request->tags) {
+            $this->repository->sync($result, 'tags', $request->tags);
         }
 
         if ($result) {
@@ -82,8 +88,10 @@ class PostController extends Controller
         $post = $this->repository->get($id);
         $category = new Repository('App\Models\Category');
         $categories = $category->getAll();
+        $tag = new Repository('App\Models\Tag');
+        $tags = $tag->getAll();
 
-        return view('admin.post.edit', ['post' => $post, 'categories' => $categories]);
+        return view('admin.post.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -95,7 +103,7 @@ class PostController extends Controller
      */
     public function update(StorePost $request, $id)
     {
-        $input = $request->except('_token', '_method', 'categories');
+        $input = $request->except('_token', '_method', 'categories', 'tags', 'files');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
@@ -106,6 +114,10 @@ class PostController extends Controller
 
         if ($request->categories) {
             $this->repository->sync($post, 'categories', $request->categories);
+        }
+
+        if ($request->tags) {
+            $this->repository->sync($post, 'tags', $request->tags);
         }
 
         if ($result) {

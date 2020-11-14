@@ -90,6 +90,16 @@
                                             </div>
 
                                             <div class="form-group">
+                                                <label>Tags</label>
+
+                                                <select name="tags[]" class="select2" data-placeholder="Select a State" multiple="multiple" style="width: 100%;">
+                                                    @foreach($tags as $tag)
+                                                        <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label>Image</label>
 
                                                 <input name="image" type="file" class="form-control">
