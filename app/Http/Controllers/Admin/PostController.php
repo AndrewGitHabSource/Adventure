@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StorePlace;
+use App\Http\Requests\StorePost;
 
 
 class PostController extends Controller
@@ -38,7 +38,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.place.create');
+        $category = new Repository('App\Models\Category');
+        $categories = $category->getAll();
+
+        return view('admin.post.create', ['categories' => $categories]);
     }
 
     /**
@@ -47,7 +50,7 @@ class PostController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePlace $request)
+    public function store(StorePost $request)
     {
         $input = $request->except('_token', '_method', 'image');
 
@@ -56,6 +59,10 @@ class PostController extends Controller
         }
 
         $result = $this->repository->insert($input, true);
+
+        if ($request->categories) {
+            $this->repository->sync($result, 'categories', $request->categories);
+        }
 
         if ($result) {
             return redirect()->route('posts.index')->with('success_message', 'Post Saved');
@@ -86,7 +93,7 @@ class PostController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePost $request, $id)
     {
         $input = $request->except('_token', '_method', 'categories');
 
@@ -95,7 +102,7 @@ class PostController extends Controller
         }
 
         $result = $this->repository->update($input, $id);
-        $post = $this->repository->get($result);
+        $post = $this->repository->get($id);
 
         if ($request->categories) {
             $this->repository->sync($post, 'categories', $request->categories);

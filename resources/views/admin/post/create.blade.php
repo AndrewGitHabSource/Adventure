@@ -30,13 +30,31 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
+                        @if(session()->has('success_message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success_message') }}
+                            </div>
+                        @endif
+
+                        @if($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+
+                                @foreach($errors->all() as $error)
+                                    {{ $error }}<br/>
+                                @endforeach
+                            </div>
+                        @endif
+
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Add Post Form</h3>
                             </div>
 
                             <div class="card-body">
-                                <form method="post" action="{{ route('places.store') }}" role="form" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('posts.store') }}" role="form" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="row">
@@ -60,15 +78,21 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Image</label>
+                                                <label>Categories</label>
 
-                                                <input name="image" type="file" class="form-control">
+                                                @foreach($categories as $category)
+                                                    <div class="form-check">
+                                                        <input value="{{ $category->id }}" name="categories[]" class="form-check-input" id="cat-{{$category->id}}" type="checkbox">
+
+                                                        <label for="cat-{{$category->id}}" class="form-check-label">{{ $category->title }}</label>
+                                                    </div>
+                                                @endforeach
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Image*</label>
+                                                <label>Image</label>
 
-                                                <input required name="image" type="file" class="form-control" placeholder="Logo">
+                                                <input name="image" type="file" class="form-control">
                                             </div>
 
                                             <div class="card-footer">
