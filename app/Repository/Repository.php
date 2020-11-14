@@ -57,7 +57,14 @@ class Repository implements RepositoryInterface
     public function insert($request, $generateSlug)
     {
         if ($generateSlug == true) {
-            $request['slug'] = $this->helper->setSlug($this->model, $request['name']);
+            if (isset($request['name'])){
+                $title = $request['name'];
+            }
+            else{
+                $title = $request['title'];
+            }
+
+            $request['slug'] = $this->helper->setSlug($this->model, $title);
         }
 
         return $this->model::create($request);

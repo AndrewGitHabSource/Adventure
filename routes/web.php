@@ -83,6 +83,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/places', \Admin\PlaceController::class);
     Route::resource('admin/restaurants', \Admin\RestaurantController::class);
     Route::resource('admin/posts', \Admin\PostController::class);
+    Route::resource('admin/categories', \Admin\CategoryController::class);
 
 });
 

@@ -67,9 +67,9 @@
                                                     <div class="form-check">
                                                         <input @if ($post->categories->contains($category->id))
                                                             {{ 'checked' }}
-                                                        @endif value="{{ $category->id }}" name="categories[]" class="form-check-input" type="checkbox">
+                                                        @endif value="{{ $category->id }}" name="categories[]" class="form-check-input" id="cat-{{$category->id}}" type="checkbox">
 
-                                                        <label class="form-check-label">{{ $category->title }}</label>
+                                                        <label for="cat-{{$category->id}}" class="form-check-label">{{ $category->title }}</label>
                                                     </div>
                                                 @endforeach
                                             </div>
