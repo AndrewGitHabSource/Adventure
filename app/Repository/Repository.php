@@ -86,6 +86,14 @@ class Repository implements RepositoryInterface
         $relation->associateBelongTo();
     }
 
+    public function sync($childModel, $parentModel, $arrayList){
+        $relation = new Relation($arrayList);
+
+        $relation->setParentModel($parentModel);
+        $relation->setRelation($childModel);
+        $relation->syncManyToMany();
+    }
+
     public function checkboxHandler($input, $value)
     {
         if (isset($input[$value]) && $input[$value] == 'on') {

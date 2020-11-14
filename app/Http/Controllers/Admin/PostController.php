@@ -73,8 +73,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = $this->repository->get($id);
+        $category = new Repository('App\Models\Category');
+        $categories = $category->getAll();
 
-        return view('admin.post.edit', ['post' => $post]);
+        return view('admin.post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
@@ -86,13 +88,18 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->except('_token', '_method');
+        $input = $request->except('_token', '_method', 'categories');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
         }
 
         $result = $this->repository->update($input, $id);
+        $post = $this->repository->get($result);
+
+        if ($request->categories) {
+            $this->repository->sync($post, 'categories', $request->categories);
+        }
 
         if ($result) {
             return redirect()->route('posts.index')->with('success_message', 'Post Saved');

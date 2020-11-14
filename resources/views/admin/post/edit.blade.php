@@ -60,6 +60,20 @@
                                                 <input value="{{ $post->date }}" required name="date" type="date" class="form-control">
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Categories</label>
+
+                                                @foreach($categories as $category)
+                                                    <div class="form-check">
+                                                        <input @if ($post->categories->contains($category->id))
+                                                            {{ 'checked' }}
+                                                        @endif value="{{ $category->id }}" name="categories[]" class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">{{ $category->title }}</label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+
                                             <div style="width: 400px;">
                                                 <img src="{{ $post->image }}" style="max-width: 100%;">
                                             </div>

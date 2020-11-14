@@ -38,4 +38,10 @@ class Relation implements RelationInterface
         $this->relation->$function()->associate($this->arrayList);
         $this->relation->save();
     }
+
+    public function syncManyToMany(){
+        $function = $this->parentModel;
+        $this->relation->$function()->sync($this->arrayList);
+//        $this->relation->save();
+    }
 }
