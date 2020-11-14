@@ -6,28 +6,28 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StorePost;
+use App\Http\Requests\StoreCountry;
 
 
-class PostController extends Controller
+class PageController extends Controller
 {
     public $repository = null;
 
     public function __construct()
     {
-        $this->repository = new Repository('App\Models\Post');
+        $this->repository = new Repository('App\Models\Page');
     }
 
     public function index(Request $request)
     {
-        $posts = $this->repository->search($request->search, ['title', 'description']);
+        $pages = $this->repository->search($request->search, ['title', 'description']);
 
         if ($request->ajax()) {
-            $returnHTML = view('admin.post.posts_loop')->with('posts', $posts)->render();
+            $returnHTML = view('admin.page.pages_loop')->with('pages', $pages)->render();
 
             return response()->json(array('result' => $returnHTML), 200);
         } else {
-            return view('admin.post.list', ['posts' => $posts]);
+            return view('admin.page.list', ['pages' => $pages]);
         }
     }
 
@@ -38,12 +38,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categoryRepository = new Repository('App\Models\Category');
-        $categories = $categoryRepository->getAll();
-        $tagRepository = new Repository('App\Models\Tag');
-        $tags = $tagRepository->getAll();
-
-        return view('admin.post.create', ['categories' => $categories, 'tags' => $tags]);
+        return view('admin.page.create');
     }
 
     /**
@@ -52,9 +47,9 @@ class PostController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePost $request)
+    public function store(Request $request)
     {
-        $input = $request->except('_token', '_method', 'image', 'files');
+        $input = $request->except('_token', '_method', 'files');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
@@ -62,16 +57,8 @@ class PostController extends Controller
 
         $result = $this->repository->insert($input, true);
 
-        if ($request->categories) {
-            $this->repository->sync($result, 'categories', $request->categories);
-        }
-
-        if ($request->tags) {
-            $this->repository->sync($result, 'tags', $request->tags);
-        }
-
         if ($result) {
-            return redirect()->route('posts.index')->with('success_message', 'Post Saved');
+            return redirect()->route('pages.index')->with('success_message', 'Page Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -85,13 +72,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = $this->repository->get($id);
-        $categoryRepository = new Repository('App\Models\Category');
-        $categories = $categoryRepository->getAll();
-        $tagRepository = new Repository('App\Models\Tag');
-        $tags = $tagRepository->getAll();
+        $country = $this->repository->get($id);
 
-        return view('admin.post.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
+        return view('admin.page.edit', ['page' => $country]);
     }
 
     /**
@@ -101,27 +84,18 @@ class PostController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePost $request, $id)
+    public function update(Request $request, $id)
     {
-        $input = $request->except('_token', '_method', 'categories', 'tags', 'files');
+        $input = $request->except('_token', '_method', 'id', 'image');
 
         if ($request->image) {
             $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
         }
 
         $result = $this->repository->update($input, $id);
-        $post = $this->repository->get($id);
-
-        if ($request->categories) {
-            $this->repository->sync($post, 'categories', $request->categories);
-        }
-
-        if ($request->tags) {
-            $this->repository->sync($post, 'tags', $request->tags);
-        }
 
         if ($result) {
-            return redirect()->route('posts.index')->with('success_message', 'Post Saved');
+            return redirect()->route('pages.index')->with('success_message', 'Page Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -138,7 +112,7 @@ class PostController extends Controller
         $result = $this->repository->delete($id);
 
         if ($result) {
-            return redirect()->route('posts.index')->with('success_message', 'Post Deleted');
+            return redirect()->route('pages.index')->with('success_message', 'Page Deleted');
         } else {
             return redirect()->back()->with('error', 'Error');
         }

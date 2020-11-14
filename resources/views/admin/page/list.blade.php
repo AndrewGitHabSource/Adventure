@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>List Posts</h1>
+                        <h1>List Pages</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">List Posts</li>
+                            <li class="breadcrumb-item active">List Pages</li>
                         </ol>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 280px;">
-                                        <form id="search-form" name="form" method="get" action="{{ route('posts.index') }}" style="width: 100%; display: flex;">
+                                        <form id="search-form" name="form" method="get" action="{{ route('pages.index') }}" style="width: 100%; display: flex;">
                                             <input type="text" name="search" value="@if(request()->search){{request()->search}}@endif" class="search-input form-control float-right" placeholder="Search">
 
                                             <div class="input-group-append">
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="card-body table-responsive p-0 search-ajax">
-                                @include('admin.post.posts_loop', ['posts' => $posts])
+                                @include('admin.page.pages_loop', ['pages' => $pages])
                             </div>
                         </div>
                     </div>

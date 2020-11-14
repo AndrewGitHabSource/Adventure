@@ -11561,6 +11561,10 @@ textarea.form-control {
     position: relative;
 }
 
+.ftco-section img{
+    max-width: 100%;
+}
+
 @media (max-width: 767.98px) {
     .ftco-section {
         padding: 6em 0;
