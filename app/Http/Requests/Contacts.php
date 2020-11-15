@@ -25,7 +25,7 @@ class Contacts extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|unique:contacts,email|email:rfc',
+            'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required'
         ];
