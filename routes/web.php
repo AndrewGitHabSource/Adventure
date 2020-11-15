@@ -75,6 +75,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::post('/admin/delete-hotel-images', [Controllers\Admin\HotelController::class, 'deleteHotelImage'])->name('delete.hotel.images');
 
     Route::post('/admin/select-country', [Controllers\Admin\AdminController::class, 'selectCountry'])->name('select.country');
+    Route::post('/admin/select-hotel', [Controllers\Admin\AdminController::class, 'selectHotel'])->name('select.hotel');
 
     Route::resource('admin/hotels', \Admin\HotelController::class);
     Route::resource('admin/countries', \Admin\CountryController::class);
@@ -88,6 +89,8 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/pages', \Admin\PageController::class);
     Route::resource('admin/contacts', \Admin\ContactController::class);
     Route::resource('admin/subscribers', \Admin\SubscriberController::class);
+    Route::resource('admin/cars', \Admin\CarController::class);
+    Route::resource('admin/user_bookings', \Admin\UserBookingController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

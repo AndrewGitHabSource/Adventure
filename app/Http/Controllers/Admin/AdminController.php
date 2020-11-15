@@ -39,4 +39,14 @@ class AdminController extends Controller
 
         return response()->json(array('result' => $cities), 200);
     }
+
+    public function selectHotel(Request $request){
+        $hotelRepository = new Repository('App\Models\Hotel');
+        $hotelId = $hotelRepository->where('id', '=', $request->value)[0]->id;
+
+        $roomRepository = new Repository('App\Models\Room');
+        $rooms = $roomRepository->where('hotel_id', '=', $hotelId);
+
+        return response()->json(array('result' => $rooms), 200);
+    }
 }

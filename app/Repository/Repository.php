@@ -60,6 +60,9 @@ class Repository implements RepositoryInterface
             if (isset($request['name'])){
                 $title = $request['name'];
             }
+            else if (isset($request['model'])){
+                $title = $request['model'];
+            }
             else{
                 $title = $request['title'];
             }

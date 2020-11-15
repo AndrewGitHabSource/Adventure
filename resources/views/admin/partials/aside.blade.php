@@ -386,6 +386,64 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Cars
+
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/cars" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Cars</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admin/cars/create" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Car</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            User Bookings
+
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/user_bookings" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Bookings</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admin/user_bookings/create" class="nav-link">
+
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Booking</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </div>

@@ -149,6 +149,40 @@ $(function () {
         });
     });
 
+    $('#select_hotel').bind("change", (e) => {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/select-hotel',
+            dataType: 'json',
+            data: {
+                'value': e.target.value
+            },
+
+            success: function (data) {
+                console.log(data.result);
+
+                if (data.result) {
+                    let rooms = data.result;
+                    let html = '';
+
+                    for (let i = 0; i < rooms.length; i++){
+                        html += `<option value="${rooms[i].id}">${rooms[i].name}</option>`;
+                    }
+
+                    $('#select_room').html(html);
+                } else {
+                    console.log(data);
+                }
+            },
+
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
     // Make the dashboard widgets sortable Using jquery UI
     $('.connectedSortable').sortable({
         placeholder: 'sort-highlight',

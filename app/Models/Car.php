@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
+    protected $guarded = ['id'];
+
     public function scopeFilter(Builder $builder, QueryFilter $filters)
     {
         return $filters->apply($builder);

@@ -45,12 +45,21 @@ class Hotel extends Model
         return $this->belongsToMany('App\Models\Hotel', 'hotel_hotel', 'parent_id', 'child_id');
     }
 
+    public function user_bookings()
+    {
+        return $this->hasMany('App\Models\UserBooking', 'hotel_id');
+    }
+
     public function scopePopular($query){
         return $query->where('popular', true)->take(4)->get();
     }
 
     public function scopeBySlug($query, $slug){
         return $query->where('slug', $slug)->firstOrFail();
+    }
+
+    public function scopeById($query, $id){
+        return $query->where('id', $id)->firstOrFail();
     }
 
     public function scopeFilter(Builder $builder, QueryFilter $filters)

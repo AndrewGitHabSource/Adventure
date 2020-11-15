@@ -33,7 +33,7 @@
 
                 <td>{{ $restaurant->rating }}</td>
 
-                <td>{{ $restaurant->recommended }}</td>
+                <td>@if($restaurant->recommended == true) {{ 'yes' }} @else {{ 'no' }} @endif</td>
 
                 <td>
                     <form method="post" action="{{ route('restaurants.destroy', ['restaurant' => $restaurant]) }}">
