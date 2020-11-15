@@ -33,6 +33,6 @@ class CommonController extends Controller
 
         $subscriber = Subscriber::create($input);
 
-        return redirect()->back()->with('success_message', 'Your rating has been sent!');
+        return redirect()->back()->with('success_message', 'Your email has been saved!');
     }
 }
