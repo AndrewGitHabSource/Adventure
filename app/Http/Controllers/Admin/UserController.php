@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\StoreUserBooking;
+use App\Http\Requests\StoreUser;
+use App\Http\Requests\EditUser;
 
 
 class UserController extends Controller
@@ -39,7 +40,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $groupRepository = new Repository('App\Models\Group');
+        $groups = $groupRepository->getAll();
+
+        return view('admin.user.create', ['groups' => $groups]);
     }
 
     /**
@@ -48,9 +52,9 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
-        $input = $request->except('_token', '_method');
+        $input = $request->except('_token', '_method', 'groups');
         $input = $this->repository->checkboxHandler($input, 'is_admin');
         $input['password'] =  Hash::make($request->password);
 
@@ -59,6 +63,10 @@ class UserController extends Controller
         }
 
         $result = $this->repository->insert($input, false);
+
+        if ($request->groups) {
+            $this->repository->sync($result, 'groups', $request->groups);
+        }
 
         if ($result) {
             return redirect()->route('users.index')->with('success_message', 'User Saved');
@@ -77,7 +85,10 @@ class UserController extends Controller
     {
         $user = $this->repository->get($id);
 
-        return view('admin.user.edit', ['user' => $user]);
+        $groupRepository = new Repository('App\Models\Group');
+        $groups = $groupRepository->getAll();
+
+        return view('admin.user.edit', ['user' => $user, 'groups' => $groups]);
     }
 
     /**
@@ -87,9 +98,9 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditUser $request, $id)
     {
-        $input = $request->except('_token', '_method');
+        $input = $request->except('_token', '_method', 'groups');
         $input = $this->repository->checkboxHandler($input, 'is_admin');
         $input['password'] =  Hash::make($request->password);
 
@@ -98,6 +109,11 @@ class UserController extends Controller
         }
 
         $result = $this->repository->update($input, $id);
+        $user = $this->repository->get($id);
+
+        if ($request->groups) {
+            $this->repository->sync($user, 'groups', $request->groups);
+        }
 
         if ($result) {
             return redirect()->route('users.index')->with('success_message', 'User Saved');

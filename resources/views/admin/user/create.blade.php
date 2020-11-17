@@ -68,15 +68,25 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Info*</label>
+                                                <label>Info</label>
 
-                                                <textarea class="textarea" required name="info"></textarea>
+                                                <textarea class="textarea" name="info"></textarea>
                                             </div>
 
                                             <div class="form-check">
                                                 <input name="is_admin" class="form-check-input" type="checkbox">
 
                                                 <label class="form-check-label">Is Admin</label>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Groups</label>
+
+                                                <select name="groups[]" class="select2" data-placeholder="Select a State" multiple="multiple" style="width: 100%;">
+                                                    @foreach($groups as $group)
+                                                        <option value="{{ $group->id }}">{{ $group->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
                                             <div class="form-group">

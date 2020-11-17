@@ -92,6 +92,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/cars', \Admin\CarController::class);
     Route::resource('admin/user_bookings', \Admin\UserBookingController::class);
     Route::resource('admin/users', \Admin\UserController::class);
+    Route::resource('admin/groups', \Admin\GroupController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
