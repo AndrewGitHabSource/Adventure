@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Restaurant</h1>
+                        <h1>Create USer</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">Create Restaurant</li>
+                            <li class="breadcrumb-item active">Create User</li>
                         </ol>
                     </div>
                 </div>
@@ -29,16 +29,16 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    @include('admin.partials.sessions')
-
                     <div class="col-sm-12">
+                        @include('admin.partials.sessions')
+
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add Restaurant Form</h3>
+                                <h3 class="card-title">Add User Form</h3>
                             </div>
 
                             <div class="card-body">
-                                <form method="post" action="{{ route('restaurants.store') }}" role="form" enctype="multipart/form-data">
+                                <form method="post" action="{{ route('users.store') }}" role="form" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="row">
@@ -50,53 +50,39 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Country*</label>
+                                                <label>Email*</label>
 
-                                                <select name="country" id="select_country" class="form-control">
-                                                    @foreach($countries as $country)
-                                                        <option value="{{ $country->name }}">{{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input required name="email" type="text" class="form-control" placeholder="Enter Email">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>City*</label>
+                                                <label>Login*</label>
 
-                                                <select name="city" id="select_city" class="form-control">
-                                                    @foreach($cities as $city)
-                                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input required name="login" type="text" class="form-control" placeholder="Enter Login">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Address*</label>
+                                                <label>Password*</label>
 
-                                                <input required name="address" type="text" class="form-control">
+                                                <input required name="password" type="text" class="form-control" placeholder="Enter Password">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Description*</label>
+                                                <label>Info*</label>
 
-                                                <textarea class="textarea" required name="description"></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Rating*</label>
-
-                                                <input required name="rating" type="text" class="form-control" placeholder="Enter rating">
+                                                <textarea class="textarea" required name="info"></textarea>
                                             </div>
 
                                             <div class="form-check">
-                                                <input name="recommended" class="form-check-input" type="checkbox">
+                                                <input name="is_admin" class="form-check-input" type="checkbox">
 
-                                                <label class="form-check-label">Recommended</label>
+                                                <label class="form-check-label">Is Admin</label>
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Image*</label>
+                                                <label>Image</label>
 
-                                                <input required name="image" type="file" class="form-control">
+                                                <input name="profile_photo_path" type="file" class="form-control">
                                             </div>
 
                                             <div class="card-footer">

@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Restaurant</h1>
+                        <h1>Edit User</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">Create Restaurant</li>
+                            <li class="breadcrumb-item active">Edit User</li>
                         </ol>
                     </div>
                 </div>
@@ -34,69 +34,60 @@
                     <div class="col-sm-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add Restaurant Form</h3>
+                                <h3 class="card-title">Edit User Form</h3>
                             </div>
 
                             <div class="card-body">
-                                <form method="post" action="{{ route('restaurants.store') }}" role="form" enctype="multipart/form-data">
+                                <form method="post" id="edit-form-hotel" action="{{ route('users.update', ['user' => $user->id]) }}" role="form" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
 
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Name*</label>
 
-                                                <input required name="name" type="text" class="form-control" placeholder="Enter Name">
+                                                <input value="{{ $user->name }}" required name="name" type="text" class="form-control" placeholder="Enter Name">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Country*</label>
+                                                <label>Email*</label>
 
-                                                <select name="country" id="select_country" class="form-control">
-                                                    @foreach($countries as $country)
-                                                        <option value="{{ $country->name }}">{{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input value="{{ $user->email }}" required name="email" type="text" class="form-control" placeholder="Enter Email">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>City*</label>
+                                                <label>Login*</label>
 
-                                                <select name="city" id="select_city" class="form-control">
-                                                    @foreach($cities as $city)
-                                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input value="{{ $user->login }}" required name="login" type="text" class="form-control" placeholder="Enter Login">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Address*</label>
+                                                <label>Password*</label>
 
-                                                <input required name="address" type="text" class="form-control">
+                                                <input value="{{ $user->password }}" required name="password" type="password" class="form-control" placeholder="Enter Password">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Description*</label>
+                                                <label>Info*</label>
 
-                                                <textarea class="textarea" required name="description"></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Rating*</label>
-
-                                                <input required name="rating" type="text" class="form-control" placeholder="Enter rating">
+                                                <textarea class="textarea" required name="info">{{ $user->info }}</textarea>
                                             </div>
 
                                             <div class="form-check">
-                                                <input name="recommended" class="form-check-input" type="checkbox">
+                                                <input name="is_admin" @if ($user->is_admin){{'checked'}}@endif class="form-check-input" type="checkbox">
 
-                                                <label class="form-check-label">Recommended</label>
+                                                <label class="form-check-label">Is Admin</label>
+                                            </div>
+
+                                            <div style="width: 400px;">
+                                                <img src="{{ $user->profile_photo_path }}" style="max-width: 100%;">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Image*</label>
+                                                <label>Image</label>
 
-                                                <input required name="image" type="file" class="form-control">
+                                                <input name="profile_photo_path" type="file" class="form-control">
                                             </div>
 
                                             <div class="card-footer">
