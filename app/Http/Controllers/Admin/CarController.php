@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StoreRestaurant;
+use App\Http\Requests\StoreCar;
 
 
 class CarController extends Controller
@@ -53,7 +53,7 @@ class CarController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCar $request)
     {
         $input = $request->except('_token', '_method', 'image');
 
@@ -97,7 +97,7 @@ class CarController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCar $request, $id)
     {
         $input = $request->except('_token', '_method');
 

@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StoreCountry;
+use App\Http\Requests\StorePage;
 
 
 class PageController extends Controller
@@ -47,7 +47,7 @@ class PageController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePage $request)
     {
         $input = $request->except('_token', '_method', 'files');
 
@@ -84,7 +84,7 @@ class PageController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePage $request, $id)
     {
         $input = $request->except('_token', '_method', 'id', 'image');
 

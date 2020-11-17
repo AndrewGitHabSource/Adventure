@@ -29,6 +29,8 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
+                    @include('admin.partials.sessions')
+
                     <div class="col-sm-12">
                         <div class="card card-primary">
                             <div class="card-header">

@@ -30,6 +30,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
+                        @include('admin.partials.sessions')
+
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Edit Restaurant Form</h3>
@@ -79,15 +81,15 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Date Start*</label>
+                                                <label>Date Start</label>
 
-                                                <input value="{{ $car->date_start }}" required name="date_start" type="date" class="form-control" placeholder="Enter Model">
+                                                <input value="{{ $car->date_start }}" name="date_start" type="date" class="form-control" placeholder="Enter Model">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Date End*</label>
+                                                <label>Date End</label>
 
-                                                <input value="{{ $car->date_end }}" required name="date_end" type="date" class="form-control" placeholder="Enter Model">
+                                                <input value="{{ $car->date_end }}" name="date_end" type="date" class="form-control" placeholder="Enter Model">
                                             </div>
 
                                             <div style="width: 400px;">

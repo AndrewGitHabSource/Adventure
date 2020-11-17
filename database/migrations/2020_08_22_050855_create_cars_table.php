@@ -21,8 +21,8 @@ class CreateCarsTable extends Migration
             $table->string('country');
             $table->string('city');
             $table->text('description');
-            $table->date('date_start');
-            $table->date('date_end');
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
             $table->timestamps();
         });
     }

@@ -6,6 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
+use App\Http\Requests\StoreUserBooking;
 
 
 class UserBookingController extends Controller
@@ -52,7 +53,7 @@ class UserBookingController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserBooking $request)
     {
         $input = $request->except('_token', '_method');
 
@@ -92,7 +93,7 @@ class UserBookingController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUserBooking $request, $id)
     {
         $input = $request->except('_token', '_method');
 

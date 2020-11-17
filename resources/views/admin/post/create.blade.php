@@ -30,23 +30,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
-                        @if(session()->has('success_message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('success_message') }}
-                            </div>
-                        @endif
-
-                        @if($errors->any())
-                            <div class="alert alert-danger" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-
-                                @foreach($errors->all() as $error)
-                                    {{ $error }}<br/>
-                                @endforeach
-                            </div>
-                        @endif
+                        @include('admin.partials.sessions')
 
                         <div class="card card-primary">
                             <div class="card-header">

@@ -30,6 +30,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
+                        @include('admin.partials.sessions')
+
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Add Tag Form</h3>

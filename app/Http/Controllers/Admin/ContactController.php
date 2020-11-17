@@ -6,7 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
-use App\Http\Requests\StoreCountry;
+use App\Http\Requests\StoreContact;
 
 
 class ContactController extends Controller
@@ -47,7 +47,7 @@ class ContactController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContact $request)
     {
         $input = $request->except('_token', '_method', 'files');
 
@@ -80,7 +80,7 @@ class ContactController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreContact $request, $id)
     {
         $input = $request->except('_token', '_method', 'files', 'id', 'image');
 

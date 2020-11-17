@@ -6,6 +6,7 @@ use App\Interfaces\RepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repository\Repository;
+use App\Http\Requests\StoreSubscriber;
 
 
 class SubscriberController extends Controller
@@ -46,7 +47,7 @@ class SubscriberController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSubscriber $request)
     {
         $input = $request->except('_token', '_method', 'files');
 
@@ -79,7 +80,7 @@ class SubscriberController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSubscriber $request, $id)
     {
         $input = $request->except('_token', '_method', 'files', 'id', 'image');
 
