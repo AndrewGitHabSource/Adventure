@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Place</h1>
+                        <h1>Create Restaurant</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">Create Place</li>
+                            <li class="breadcrumb-item active">Create Restaurant</li>
                         </ol>
                     </div>
                 </div>

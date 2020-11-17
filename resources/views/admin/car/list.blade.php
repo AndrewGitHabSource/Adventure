@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>List Restaurant</h1>
+                        <h1>List Cars</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">List Places</li>
+                            <li class="breadcrumb-item active">List Cars</li>
                         </ol>
                     </div>
                 </div>

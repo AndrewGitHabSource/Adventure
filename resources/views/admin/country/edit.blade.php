@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Hotel</h1>
+                        <h1>Edit Country</h1>
                     </div>
 
                     <div class="col-sm-6">
@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">Edit Hotel</li>
+                            <li class="breadcrumb-item active">Edit Country</li>
                         </ol>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Hotel Form</h3>
+                                <h3 class="card-title">Edit Country Form</h3>
                             </div>
 
                             <div class="card-body">

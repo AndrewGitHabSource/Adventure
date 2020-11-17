@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">List Places</li>
+                            <li class="breadcrumb-item active">List Restaurants</li>
                         </ol>
                     </div>
                 </div>

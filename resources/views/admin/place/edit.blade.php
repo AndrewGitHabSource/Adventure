@@ -19,7 +19,7 @@
                                 <a href="/admin">Home</a>
                             </li>
 
-                            <li class="breadcrumb-item active">Edit City</li>
+                            <li class="breadcrumb-item active">Edit Place</li>
                         </ol>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Edit City Form</h3>
+                                <h3 class="card-title">Edit Place Form</h3>
                             </div>
 
                             <div class="card-body">
