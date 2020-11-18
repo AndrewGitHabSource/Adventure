@@ -28,7 +28,7 @@
                 <td>{{ $room->count_beds }}</td>
 
                 <td>
-                    <form method="post" action="{{ route('hotels.rooms.destroy', ['room' => $room, 'hotel' => $room->hotel_id]) }}">
+                    <form method="post" action="{{ route('hotels.rooms.destroy', ['hotel' => $room->hotel_id, 'room' => $room]) }}">
                         @csrf
                         @method('DELETE')
 

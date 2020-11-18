@@ -15,7 +15,8 @@ class AvailabilityHotels extends Model
         'date_to',
         'guest_count',
         'children_count',
-        'hotel_id' => 'hotel_id'
+        'hotel_id' => 'hotel_id',
+        'status',
     ];
 
     public function hotel()

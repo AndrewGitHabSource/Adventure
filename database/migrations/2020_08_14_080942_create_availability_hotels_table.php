@@ -21,6 +21,7 @@ class CreateAvailabilityHotelsTable extends Migration
             $table->date('date_to');
             $table->integer('guest_count');
             $table->integer('children_count');
+            $table->string('status')->nullable();
 
             $table->unsignedBigInteger('hotel_id')->nullable();
             $table->foreign('hotel_id')->references('id')->on('hotels');

@@ -9,25 +9,25 @@ use App\Repository\Repository;
 use App\Http\Requests\StorePage;
 
 
-class PageController extends Controller
+class AvailabilityHotelsController extends Controller
 {
     public $repository = null;
 
     public function __construct()
     {
-        $this->repository = new Repository('App\Models\Page');
+        $this->repository = new Repository('App\Models\AvailabilityHotels');
     }
 
     public function index(Request $request)
     {
-        $pages = $this->repository->search($request->search, ['title', 'description']);
+        $availability_hotels = $this->repository->search($request->search, ['name', 'email', 'date_from', 'date_to']);
 
         if ($request->ajax()) {
-            $returnHTML = view('admin.page.pages_loop')->with('pages', $pages)->render();
+            $returnHTML = view('admin.availability_hotel.availability_hotels_loop')->with('availability_hotels', $availability_hotels)->render();
 
             return response()->json(array('result' => $returnHTML), 200);
         } else {
-            return view('admin.page.list', ['pages' => $pages]);
+            return view('admin.availability_hotel.list', ['availability_hotels' => $availability_hotels]);
         }
     }
 
@@ -38,7 +38,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('admin.page.create');
+        return view('admin.availability_hotel.create');
     }
 
     /**
@@ -47,18 +47,14 @@ class PageController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePage $request)
+    public function store(Request $request)
     {
-        $input = $request->except('_token', '_method', 'files');
+        $input = $request->except('_token', '_method');
 
-        if ($request->image) {
-            $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
-        }
-
-        $result = $this->repository->insert($input, true);
+        $result = $this->repository->insert($input, false);
 
         if ($result) {
-            return redirect()->route('pages.index')->with('success_message', 'Page Saved');
+            return redirect()->route('availability-hotels.index')->with('success_message', 'Availability hotel Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -72,9 +68,9 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $page = $this->repository->get($id);
+        $availability_hotel = $this->repository->get($id);
 
-        return view('admin.page.edit', ['page' => $page]);
+        return view('admin.availability_hotel.edit', ['availability_hotel' => $availability_hotel]);
     }
 
     /**
@@ -84,18 +80,14 @@ class PageController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePage $request, $id)
+    public function update(Request $request, $id)
     {
-        $input = $request->except('_token', '_method', 'id', 'image');
-
-        if ($request->image) {
-            $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
-        }
+        $input = $request->except('_token', '_method');
 
         $result = $this->repository->update($input, $id);
 
         if ($result) {
-            return redirect()->route('pages.index')->with('success_message', 'Page Saved');
+            return redirect()->route('availability-hotels.index')->with('success_message', 'Availability hotel Saved');
         } else {
             return redirect()->back()->with('error', 'Error');
         }
@@ -112,7 +104,7 @@ class PageController extends Controller
         $result = $this->repository->delete($id);
 
         if ($result) {
-            return redirect()->route('pages.index')->with('success_message', 'Page Deleted');
+            return redirect()->route('availability-hotels.index')->with('success_message', 'Availability hotel Deleted');
         } else {
             return redirect()->back()->with('error', 'Error');
         }

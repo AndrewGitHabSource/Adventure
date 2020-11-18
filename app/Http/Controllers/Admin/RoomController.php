@@ -55,6 +55,10 @@ class RoomController extends Controller
     {
         $input = $request->except('_token', '_method', 'files');
 
+        if ($request->image) {
+            $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
+        }
+
         $result = $this->repository->insert($input, true);
 
         if ($result) {
@@ -90,6 +94,10 @@ class RoomController extends Controller
     {
         $input = $request->except('_token', '_method', 'files', 'id', 'image');
 
+        if ($request->image) {
+            $input['image'] = $this->repository->ImagesUpload($request, [$request->image])[0]['image'];
+        }
+
         $result = $this->repository->update($input, $id);
 
         if ($result) {
@@ -105,12 +113,12 @@ class RoomController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($hotel, $id)
     {
         $result = $this->repository->delete($id);
 
         if ($result) {
-            return redirect()->route('hotels.rooms.index')->with('success_message', 'Room Deleted');
+            return  redirect()->route('hotels.rooms.index', ['hotel' => $hotel])->with('success_message', 'Room Deleted');
         } else {
             return redirect()->back()->with('error', 'Error');
         }

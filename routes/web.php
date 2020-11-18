@@ -93,6 +93,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/user_bookings', \Admin\UserBookingController::class);
     Route::resource('admin/users', \Admin\UserController::class);
     Route::resource('admin/groups', \Admin\GroupController::class);
+    Route::resource('admin/availability-hotels', \Admin\AvailabilityHotelsController::class);
     Route::resource('admin/hotels.rooms', \Admin\RoomController::class);
 });
 
