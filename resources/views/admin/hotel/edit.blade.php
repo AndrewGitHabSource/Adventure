@@ -38,6 +38,10 @@
                             </div>
 
                             <div class="card-body">
+                                <div>
+                                    <a href="{{ route('hotels.rooms.index', ['hotel' => $hotel->id]) }}">Rooms</a>
+                                </div>
+
                                 <form method="post" id="edit-form-hotel" action="{{ route('hotels.update', ['hotel' => $hotel->id]) }}" role="form" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
