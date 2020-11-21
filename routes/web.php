@@ -96,6 +96,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/availability-hotels', \Admin\AvailabilityHotelsController::class);
     Route::resource('admin/hotels.rooms', \Admin\RoomController::class);
     Route::resource('admin/hotels.available-rooms', \Admin\AvailableRoomsController::class);
+    Route::resource('admin/available-rooms.bookings', \Admin\BookingController::class);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

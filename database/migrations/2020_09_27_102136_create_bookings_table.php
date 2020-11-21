@@ -15,8 +15,10 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->string('name_client')->nullable();
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('status')->nullable();
 
             $table->unsignedBigInteger('available_room_id')->nullable();
             $table->foreign('available_room_id')->references('id')->on('available_rooms');

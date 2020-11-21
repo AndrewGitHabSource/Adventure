@@ -53,7 +53,7 @@ class AvailableRoomsController extends Controller
     {
         $input = $request->except('_token', '_method', 'files');
 
-        $result = $this->repository->insert($input, true);
+        $result = $this->repository->insert($input, false);
 
         if ($result) {
             return redirect()->route('hotels.available-rooms.index', ['hotel' => $input['hotel_id']])->with('success_message', 'Available Room Saved');
@@ -73,8 +73,10 @@ class AvailableRoomsController extends Controller
         $available_room = $this->repository->get($id);
         $hotelRepository = new ARoomRepository('App\Models\Hotel');
         $hotels = $hotelRepository->getAll();
+        $bookingsRepository = new ARoomRepository('App\Models\Booking');
+        $bookings = $bookingsRepository->where('available_room_id', '=', $id);
 
-        return view('admin.available_room.edit', ['available_room' => $available_room, 'hotels' => $hotels]);
+        return view('admin.available_room.edit', ['available_room' => $available_room, 'hotels' => $hotels, 'bookings' => $bookings]);
     }
 
     /**

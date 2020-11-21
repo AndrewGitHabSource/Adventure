@@ -11,7 +11,7 @@ class ARooms extends Model
 
     protected $table = 'available_rooms';
 
-    protected $fillable = ['hotel_id'];
+    protected $guarded = ['id'];
 
     public function bookings()
     {

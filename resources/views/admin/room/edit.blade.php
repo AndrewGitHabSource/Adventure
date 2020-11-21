@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="post" id="edit-form-hotel" action="{{ route('hotels.rooms.update', ['room' => $room->id, 'hotel' => $room->hotel_id]) }}" role="form" enctype="multipart/form-data">
+                                <form method="post" id="edit-form-hotel" action="{{ route('hotels.rooms.update', ['hotel' => $room->hotel_id, 'room' => $room->id]) }}" role="form" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
 

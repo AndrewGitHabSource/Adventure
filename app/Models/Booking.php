@@ -9,6 +9,8 @@ class Booking extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function ARooms()
     {
         return $this->belongsTo('App\Models\ARooms', 'available_room_id');
