@@ -20,6 +20,7 @@ class BookingController extends Controller
 
     public function index(Request $request, $availableRoom)
     {
+        $this->repository->setWhereSearch('available_room_id', $availableRoom);
         $bookings = $this->repository->search($request->search, ['name_client']);
 
         if ($request->ajax()) {
