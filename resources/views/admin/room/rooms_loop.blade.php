@@ -35,7 +35,7 @@
                         <button type="submit">Delete</button>
                     </form>
 
-                    <a href="{{ route('hotels.rooms.edit', ['room' => $room, 'hotel' => $room->hotel_id]) }}">Edit</a>
+                    <a href="{{ route('hotels.rooms.edit', ['hotel' => $room->hotel_id, 'room' => $room]) }}">Edit</a>
                 </td>
             </tr>
         @endforeach

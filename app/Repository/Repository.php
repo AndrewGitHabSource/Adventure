@@ -15,7 +15,7 @@ class Repository implements RepositoryInterface
     use Searchable;
     use ImageUpload;
 
-    private $model = null;
+    protected $model = null;
     private $helper = null;
 
     public function __construct($model)

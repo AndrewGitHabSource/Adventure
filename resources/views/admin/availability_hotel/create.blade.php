@@ -91,6 +91,16 @@
                                                 </select>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Hotel*</label>
+
+                                                <select name="hotel_id" required class="form-control select2bs4" style="width: 100%;">
+                                                    @foreach($hotels as $hotel)
+                                                        <option value="{{ $hotel->id }}">{{ $hotel->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
