@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as Controllers;
+//use App\Http\Controllers\User as User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +101,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
     Route::resource('admin/available-rooms.bookings', \Admin\BookingController::class);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum','verified'])->group(function(){
+    Route::get('/dashboard', [Controllers\User\UserController::class, 'index']);
+});
+
