@@ -28,12 +28,14 @@ class UserController extends Controller
     public function editUserPost(Request $request, $id){
         $post = Post::where('id', $id)->firstOrFail();
 
-        $categoryRepository = new Repository('App\Models\Category');
-        $categories = $categoryRepository->getAll();
-        $tagRepository = new Repository('App\Models\Tag');
-        $tags = $tagRepository->getAll();
+        if (auth()->user()->can('update', $post)) {
+            $categoryRepository = new Repository('App\Models\Category');
+            $categories = $categoryRepository->getAll();
+            $tagRepository = new Repository('App\Models\Tag');
+            $tags = $tagRepository->getAll();
 
-        return view('user.post_edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
+            return view('user.post_edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
+        }
     }
 
     public function saveUserPost(Request $request, $id){

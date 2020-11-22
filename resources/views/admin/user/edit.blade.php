@@ -63,9 +63,9 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Password*</label>
+                                                <label>Password</label>
 
-                                                <input value="{{ $user->password }}" required name="password" type="password" class="form-control" placeholder="Enter Password">
+                                                <input value="" name="password" type="password" class="form-control" placeholder="Enter Password">
                                             </div>
 
                                             <div class="form-group">

@@ -27,7 +27,6 @@ class EditUser extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'login' => 'required',
-            'password' => 'required',
         ];
     }
 }

@@ -100,9 +100,11 @@ class UserController extends Controller
      */
     public function update(EditUser $request, $id)
     {
-        $input = $request->except('_token', '_method', 'groups');
+        $input = $request->except('_token', '_method', 'groups', 'password');
         $input = $this->repository->checkboxHandler($input, 'is_admin');
-        $input['password'] =  Hash::make($request->password);
+        if ($request->password){
+            $input['password'] = Hash::make($request->password);
+        }
 
         if ($request->profile_photo_path) {
             $input['profile_photo_path'] = $this->repository->ImagesUpload($request, [$request->profile_photo_path])[0]['image'];
@@ -113,6 +115,9 @@ class UserController extends Controller
 
         if ($request->groups) {
             $this->repository->sync($user, 'groups', $request->groups);
+        }
+        else{
+            $user->groups()->detach();
         }
 
         if ($result) {

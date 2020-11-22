@@ -716,5 +716,22 @@ class DatabaseSeeder extends Seeder
                 'available_room_id' => 1,
             ],
         ]);
+
+        DB::table('groups')->insert([
+            [
+                'name' => 'Administrators',
+                'rules' => 'Administrators',
+            ],
+
+            [
+                'name' => 'Writers',
+                'rules' => 'Writers',
+            ],
+
+            [
+                'name' => 'Publishers',
+                'rules' => 'Publishers',
+            ],
+        ]);
     }
 }

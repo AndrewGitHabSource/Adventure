@@ -5,11 +5,11 @@
                 <img class="profile-user-img img-fluid img-circle" src="{{ $user->profile_photo_path }}" alt="User profile picture">
             </div>
 
-            <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
+            <h3 class="profile-username text-center">{{ $user->name }}</h3>
 
-            <p class="text-muted text-center">{{ auth()->user()->login }}</p>
+            <p class="text-muted text-center">{{ $user->login }}</p>
 
-            <p class="text-muted text-center">{{ auth()->user()->email }}</p>
+            <p class="text-muted text-center">{{ $user->email }}</p>
         </div>
     </div>
 
@@ -19,7 +19,7 @@
         </div>
 
         <div class="card-body">
-            {{ auth()->user()->info }}
+            {{ $user->info }}
         </div>
     </div>
 </div>
