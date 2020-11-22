@@ -49,6 +49,8 @@
                                                 <input required name="title" type="text" class="form-control" placeholder="Enter Title">
                                             </div>
 
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
                                             <div class="form-group">
                                                 <label>Description*</label>
 

@@ -102,6 +102,12 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
 });
 
 Route::middleware(['auth:sanctum','verified'])->group(function(){
-    Route::get('/dashboard', [Controllers\User\UserController::class, 'index']);
+    Route::get('/dashboard', [Controllers\UserControl\UserController::class, 'index'])->name('dashboard');
+    Route::get('/edit-user-post/{id}', [Controllers\UserControl\UserController::class, 'editUserPost'])->name('edit.user.post');
+    Route::get('/add-user-post', [Controllers\UserControl\UserController::class, 'create'])->name('create.user.post');
+
+    Route::post('/insert-user-post/', [Controllers\UserControl\UserController::class, 'insertUserPost'])->name('insert.user.post');
+    Route::post('/save-user-post/{id}', [Controllers\UserControl\UserController::class, 'saveUserPost'])->name('save.user.post');
+    Route::post('/save-user-settings', [Controllers\UserControl\UserController::class, 'saveUserSettings'])->name('save.user.settings');
 });
 

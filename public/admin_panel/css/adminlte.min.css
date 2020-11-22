@@ -54,3 +54,10 @@
     justify-content: center;
     font-size: 1.7rem;
 }
+
+.post-control-nav a{
+    display: block;
+    padding: 4px 10px;
+    margin-bottom: 20px;
+    border: 1px solid #7c9192;
+}
