@@ -28,6 +28,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $paginateCount = 15;
+        config(['paginate.paginate_count' => $paginateCount]);
+
         Paginator::useBootstrap();
         Hotel::observe(HotelObserver::class);
         ARooms::observe(AroomsObserver::class);

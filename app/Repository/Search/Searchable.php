@@ -22,7 +22,7 @@ trait Searchable {
             $query->where($column, 'LIKE', '%' . $searchValue . '%');
         }
 
-        return $query->paginate(15);
+        return $query->paginate(config('paginate.paginate_count'));
     }
 
     public function setWhereSearch($column, $value, $exp = '='){

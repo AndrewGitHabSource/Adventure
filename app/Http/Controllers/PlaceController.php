@@ -19,14 +19,14 @@ class PlaceController extends Controller
 
     public function placesList()
     {
-        $places = Place::with('ratings')->paginate(3);
+        $places = Place::with('ratings')->paginate(config('paginate.paginate_count'));
 
         return view('place.places', ['places' => $places]);
     }
 
     public function filterPlaces(PlaceFilter $request)
     {
-        $places = Place::filter($request)->paginate(3);
+        $places = Place::filter($request)->paginate(config('paginate.paginate_count'));
 
         if (RequestFacade::ajax()) {
             $returnHTML = view('place.places_loop')->with('places', $places)->render();

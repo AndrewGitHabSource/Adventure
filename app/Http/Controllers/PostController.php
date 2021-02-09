@@ -15,7 +15,7 @@ class PostController extends Controller
 {
     public function postsList(Request $request)
     {
-        $posts = Post::with('comments', 'tags', 'categories')->paginate(3);
+        $posts = Post::with('comments', 'tags', 'categories')->paginate(config('paginate.paginate_count'));
 
         return view('post.posts', ['posts' => $posts]);
     }
@@ -35,7 +35,7 @@ class PostController extends Controller
     public function category($slug)
     {
         $category = Category::with('posts')->bySlug($slug);
-        $posts = $category->posts()->paginate(3);
+        $posts = $category->posts()->paginate(config('paginate.paginate_count'));
 
         return view('post.posts', ['posts' => $posts]);
     }
@@ -43,14 +43,14 @@ class PostController extends Controller
     public function tag($slug)
     {
         $tag = Tag::with('posts')->bySlug($slug);
-        $posts = $tag->posts()->paginate(3);
+        $posts = $tag->posts()->paginate(config('paginate.paginate_count'));
 
         return view('post.posts', ['posts' => $posts]);
     }
 
     public function search(Request $request)
     {
-        $posts = Post::with('comments', 'tags', 'categories')->search($request->search)->paginate(3);
+        $posts = Post::with('comments', 'tags', 'categories')->search($request->search)->paginate(config('paginate.paginate_count'));
 
         return view('post.posts', ['posts' => $posts]);
     }

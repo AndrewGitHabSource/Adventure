@@ -41,7 +41,7 @@ class Repository implements RepositoryInterface
 
     public function getAll()
     {
-        return $this->model::paginate(15);
+        return $this->model::paginate(config('paginate.paginate_count'));
     }
 
     public function where($key, $exp, $value)

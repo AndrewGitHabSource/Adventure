@@ -23,7 +23,7 @@ class HotelController extends Controller
 
     public function hotelsList()
     {
-        $hotels = Hotel::with('galleries', 'rooms', 'ratings')->paginate(3);
+        $hotels = Hotel::with('galleries', 'rooms', 'ratings')->paginate(config('paginate.paginate_count'));
 
         return view('hotel.hotels', ['hotels' => $hotels]);
     }
@@ -48,14 +48,14 @@ class HotelController extends Controller
 
     public function searchHotels(HotelFilter $request)
     {
-        $hotels = Hotel::filter($request)->paginate(3, ['hotels.id']);
+        $hotels = Hotel::filter($request)->paginate(config('paginate.paginate_count'), ['hotels.id']);
 
         return view('hotel.hotels', ['hotels' => $hotels]);
     }
 
     public function filterHotels(HotelFindFilter $request)
     {
-        $hotels = Hotel::filter($request)->paginate(3);
+        $hotels = Hotel::filter($request)->paginate(config('paginate.paginate_count'));
 
         if (RequestFacade::ajax()) {
             $returnHTML = view('hotel.hotels_loop')->with('hotels', $hotels)->render();

@@ -10,7 +10,7 @@ use App\Models\Car;
 class CarController extends Controller
 {
     public function searchCars(CarFilter $request){
-        $cars = Car::filter($request)->paginate(3);
+        $cars = Car::filter($request)->paginate(config('paginate.paginate_count'));
 
         return view('car.cars', ['cars' => $cars]);
     }
