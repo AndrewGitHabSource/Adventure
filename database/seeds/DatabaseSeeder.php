@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -22,8 +24,8 @@ class DatabaseSeeder extends Seeder
                 'login' => 'Admin',
                 'email' => 'gmail@gmail.com',
                 'profile_photo_path' => '/images/person_1.jpg',
-                'info' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem 
-                           necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente 
+                'info' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
+                           necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente
                            consectetur similique, inventore eos fugit cupiditate numquam!',
                 'is_admin' => true,
                 'password' => Hash::make('11')

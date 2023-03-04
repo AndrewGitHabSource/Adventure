@@ -21,22 +21,18 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'login',
-        'info',
-        'is_admin',
-        'profile_photo_path'
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -46,9 +42,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -57,18 +53,9 @@ class User extends Authenticatable
     /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $appends = [
         'profile_photo_url',
     ];
-
-    public function groups()
-    {
-        return $this->belongsToMany('App\Models\Group', 'user_group');
-    }
-
-    public function posts(){
-        return $this->hasMany('App\Models\Post');
-    }
 }
