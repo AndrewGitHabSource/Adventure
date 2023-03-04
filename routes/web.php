@@ -110,4 +110,3 @@ Route::middleware(['auth:sanctum','verified'])->group(function(){
     Route::post('/save-user-post/{id}', [Controllers\UserControl\UserController::class, 'saveUserPost'])->name('save.user.post');
     Route::post('/save-user-settings', [Controllers\UserControl\UserController::class, 'saveUserSettings'])->name('save.user.settings');
 });
-
