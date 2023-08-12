@@ -12,7 +12,7 @@ the Laravel framework.
 <p>php artisan db:seed</p>
 <p>npm run dev</p>
 
-<img src="https://github.com/AndrewGitHabSource/Adventure/blob/main/img.png">
+<img src="https://github.com/AndrewGitHabSource/Adventure/blob/master/img.png">
 
 **Test data for admin panel:** <br>
 Path: `/admin` <br>
