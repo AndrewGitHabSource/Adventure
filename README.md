@@ -4,7 +4,15 @@ ASB System is an open source project that allows you to search for hotels and ro
 keep an operational record of hotels and available rooms in them. The project is written on
 the Laravel framework.
 
-<strong>The project supports latest version laravel 8.x</strong>
+<strong>The project supports latest version laravel 10.x</strong>
+
+<h2>Installation</h2>
+<p>composer install</p>
+<p>php artisan migrate</p>
+<p>php artisan db:seed</p>
+<p>npm run dev</p>
+
+<img src="https://github.com/AndrewGitHabSource/Adventure/blob/main/img.png">
 
 **Test data for admin panel:** <br>
 Path: `/admin` <br>
